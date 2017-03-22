@@ -103,14 +103,84 @@ export default {
       messages: {
         addressSaved: 'las opciones de dirección han sido guardadas'
       },
-
       newTitle: 'Opciones de dirección',
       editTitle: 'Opciones de dirección',
-      addressLabel: 'Direcciones'
+      addressLabel: 'Dirección'
+    },
+    header: {
+      facilityName: 'Nombre de Establecimiento',
+      headerLine1: 'Encabezado Line 1',
+      headerLine2: 'Encabezado Line 2',
+      headerLine3: 'Encabezado Line 3',
+      logoURL: 'URL del Logo',
+      includeFacilityName: 'Include Facility Name',
+      includeHeaderLine1: 'Include Header Line 1',
+      includeHeaderLine2: 'Include Header Line 2',
+      includeHeaderLine3: 'Include Header Line 3',
+      includeLogoURL: 'Include Logo URL',
+      titles: {
+        optionsSaved: 'Opciones Guardadas'
+      },
+      messages: {
+        headerSaved: 'Las opciones de cabecera and sido guardadas'
+      },
+      newTitle: 'Opciones de Cabecera',
+      editTitle: 'Opciones de Cabecera',
+      headerLabel: 'Cabecera'
+    },
+    customForms: {
+      buttons: {
+        addField: 'Agregar Campo',
+        moveDown: 'Mover Abajo',
+        moveUp: 'Mover Arriba',
+        newForm: '+ nuevo formulario',
+        preview: 'Previsualizar'
+
+    },
+      labels: {
+        alwaysInclude: 'Incluir siempre',
+        checkbox: 'Checkbox',
+        columns: 'Columnas',
+        colSpan: 'Número de Columnas a Expandir',
+        customForm: 'Formulario Personalizado',
+        formName: 'Nombre Formulario',
+        formType: 'Tipo Formulario',
+        includeOtherOption: 'Incluir otra opción',
+        incidentFormType: 'Incidente',
+        label: 'Etiqueta',
+        newForm: 'Nuevo Formulario',
+        operativePlanFormType: 'Plan Operativo y Reportes',
+        otherOptionLabel: 'Eiqueta Otra Opcion',
+        patientFormType: 'Paciente',
+        property: 'Propiedad',
+        radio: 'Radio',
+        select: 'Dropdown',
+        socialworkFormType: 'Trabajo Social',
+        text: 'Texto',
+        textarea: 'Texto Largo',
+        visitFormType: 'Visita',
+        opdReportFormType: 'Reporte Ambulatorio',
+        dischargeReportFormType: 'Reporte Alta'
+      },
+      messages: {
+        deleteForm: '¿Está seguro que desea borrar este formulario personalizado?',
+        formSaved: 'El formulario {{name}} ha sido guardado.'
+      },
+      titles: {
+        customForms: 'Formularios Personalizados',
+        deleteForm: 'Borrar Formulario Personalizado',
+        editCustomForm: 'Editar Formulario Personalizado',
+        fields: 'Campos',
+        formSaved: 'Formulario Guardado',
+        checkboxValues: 'Valores Checkbox',
+        dropDownValues: 'Valores Dropdown',
+        newCustomForm: 'Nuevo Formulario Personalizado',
+        radioValues: 'Valores Radio'
+      },
     },
     loaddb: {
       progressMessage: 'Por favor espere mientras la base de datos es cargada.',
-      progressTitle: 'Cargando ase de datos',
+      progressTitle: 'Cargando base de datos',
       displayAlertTitle: 'Seleccione un archivo para cargar',
       displayAlertMessage: 'Por favor seleccione un archivo para ser cargado.',
       errorDisplayAlertTitle: 'Error cargando',
@@ -122,14 +192,14 @@ export default {
       alertImportListMessage: 'Por favor seleccione un archivo para importar.',
       alertImportListSaveTitle: 'Lista importada',
       alertImportListSaveMessage: 'Lista de busqueda importada.',
-      alertImportListUpdateTitle: 'Lista salvada',
-      alertImportListUpdateMessage: 'La lista de busqueda ha sido salvada.',
+      alertImportListUpdateTitle: 'Lista guardada',
+      alertImportListUpdateMessage: 'La lista de busqueda ha sido guardada.',
       pageTitle: 'Listas de busqueda',
       edit: {
         template: {
-          addTitle: 'Adicionar valor',
+          addTitle: 'Agregar valor',
           editTitle: 'Editar valor',
-          updateButtonTextAdd: 'Adicionar',
+          updateButtonTextAdd: 'Agregar',
           updateButtonTextUpdate: 'Actualizar',
           labelTitle: 'Valor'
         }
@@ -144,6 +214,7 @@ export default {
       expenseAccountList: 'Cuentas de gastos',
       aisleLocationList: 'Ubicacion de inventario de pasillo',
       warehouseList: 'Ubicacciones de inventarios',
+      incidentDepartments: 'Departamentos de Incidentes',
       inventoryTypes: 'Tipos de inventarios',
       imagingPricingTypes: 'Tipos de precios de radiografias',
       labPricingTypes: 'Precios de laboratorio',
@@ -152,12 +223,18 @@ export default {
       procedureList: 'Procedimientos',
       procedureLocations: 'Ubicacion de los procedimientos',
       procedurePricingTypes: 'Tipos de procedimientos y precios',
-      radiologists: 'Radiologo',
+      radiologists: 'Radiologos',
       unitTypes: 'Tipos de unidad',
       vendorList: 'Proveedor',
       visitLocationList: 'Lugares de visista',
       visitTypes: 'Tipos de visita',
-      wardPricingTypes: 'Tipos de las tarifas'
+      wardPricingTypes: 'Tipos de las tarifas',
+      messages: {
+        deleteLookupValue: '¿Está seguro que desea borrar el valor {{value}}?'
+      },
+      titles: {
+        deleteLookupValue: 'Borrar Valor'
+      }
     },
     roles: {
       capability: {
@@ -183,6 +260,7 @@ export default {
         addDiagnosis: 'Adicionar diagnostico',
         addPhoto: 'Adicionar foto',
         addPatient: 'Adicionar paciente',
+        addProcedure: 'Adicionar procedimiento',
         addVisit: 'Adicionar visita',
         addVitals: 'Adicionar partes vitales',
         admitPatient: 'Admitir paciente',
@@ -194,7 +272,7 @@ export default {
         deleteSocialwork: 'Eliminar trabajo social',
         deleteVitals: 'Eliminar organo vital',
         deleteVisit: 'Eliminar visita',
-        dischargePatient: 'Descartar paciente',
+        dischargePatient: 'Dar de Alta paciente',
         patientReports: 'Reportes por paciente',
         visits: 'Visitas',
         medication: 'Medicación',
@@ -210,30 +288,77 @@ export default {
         completeImaging: 'Completar radiografia',
         deleteImaging: 'Eliminar radiografia',
         inventory: 'Inventario',
-        addInventoryRequest: 'Pedido de inventario',
+        addInventoryRequest: 'Agregar Pedido de inventario',
         addInventoryItem: 'Adicionar elemento al inventario',
         addInventoryPurchase: 'Adicionar compra',
         adjustInventoryLocation: 'Ajustar lugar elemento en el inventario',
         deleteInventoryItem: 'Eliminar elemento del inventario',
         deleteInventoryPurchase: 'Eliminar compra del inventario',
         fulfillInventory: 'Cumplimiento de inventario',
-        defineUserRoles: 'Roles de usuario'
+        defineUserRoles: 'Roles de usuario',
+        addBillingDiagnosis: 'Agregar Facturación de Diagnóstico',
+        addNote: 'Agregar Nota',
+        addSocialwork: 'Agrear Trabajo Social',
+        deleteNote: 'Borrar Nota',
+        addOperativePlan: 'Agregar Plan Operativo',
+        addAllergy: 'Agregar Alergia',
+        addOperationReport: 'Agregar Informa de Operación',
+        incident: 'Incidente',
+        addIncident: 'Agregar Incidente',
+        addIncidentCategory: 'Agregar Categoría de Incidentes',
+        deleteIncident: 'Borrar Incidente',
+        deleteIncidentCategory: 'Borrar Categoría de Incidentes',
+        generateIncidentReport: 'Generar Informe de Incidentes',
+        manageIncidents: 'Administrar Incidentes'
       },
       messages: {
-        roleSaved: 'El {{roleName}} rol ha sido salvado.'
+        roleSaved: 'El rol {{roleName}} ha sido guardado.'
       },
       titles: {
-        roleSaved: 'Role salvado'
+        roleSaved: 'Role guardado'
       }
+    },
+    visitForms: {
+      labels: {
+        followup: 'Seguimiento',
+        form: 'Formulario',
+        initial: 'Inicial',
+        visitType: 'Tipo de Visita'
+      },
+      titles: {
+        visitForms: 'Formularios de Visita'
+      }
+    },
+    workflow: {
+      admissionDepositLabel: 'Requiere Depósito de Admisión',
+      clinicPrepaymentLabel: 'Requiere Prepago Clínico',
+      followupPrepaymentLabel: 'Requiere Prepago de Seguimiento',
+      outpatientLabLabel: 'Requiere Prepago de Laboratorio para Ambulatorio',
+      outpatientImagingLabel: 'Requiere Prepago de Radiografía para Ambulatorio',
+      outpatientMedicationLabel: 'Requiere Prepago de Medicación para Ambulatorio',
+
+      titles: {
+        optionsSaved: 'Opciones Guardadas'
+      },
+      messages: {
+        optionsSaved: 'Las opciones de Flujo de trabajo han sido guardadas'
+      },
+
+      newTitle: 'Opciones de Flujo de Trabajo',
+      editTitle: 'Opciones de Flujo de Trabajo',
+      workflowLabel: 'FLujo de Trabajo'
+
     }
   },
   labels: {
     cptcode: 'Codigo CPT',
     loading: 'Cargando',
     name: 'Nombre',
+    note: 'Nota',
     patient: 'Paciente',
-    quantity: 'Cantidada',
-    requestedOn: 'Pedido On',
+    prescriber: 'Médico',
+    quantity: 'Cantidad',
+    requestedOn: 'Solicitado en',
     date: 'Fecha',
     dateOfBirth: 'Fecha de nacimiento',
     dateOfBirthShort: 'FDN',
@@ -241,11 +366,11 @@ export default {
     dateCompleted: 'Fecha completada',
     description: 'Descripción',
     requestedBy: 'Pedido por|',
-    fulfill: 'Cumplomiento',
+    fulfill: 'Cumplimiento',
     fulfillRequest: 'Pedido de cumplimiento',
     fulfillRequestNow: 'Pedido de cumplimiento ahora',
     actions: 'Acciones',
-    action: 'Accion',
+    action: 'Acción',
     notes: 'Notas',
     edit: 'Editar',
     imageOrders: 'Ordenes de radiografias',
@@ -261,6 +386,7 @@ export default {
     type: 'Tipo',
     sex: 'Genero',
     age: 'Edad',
+    search: 'Búsqueda',
     username: 'Nombre de usuario',
     email: 'Email',
     role: 'Rol',
@@ -284,7 +410,7 @@ export default {
     deleteUser: 'Eliminar usuario',
     medication: 'Medicación',
     status: 'Estado',
-    addNewOutpatientVisit: '--Nueva visita a paciente externo--',
+    addNewOutpatientVisit: '--Nueva visita ambulatoria--',
     prescription: 'Receta medica',
     prescriptionDate: 'Fecha de la receta medica',
     billTo: 'Facturar a',
@@ -294,11 +420,31 @@ export default {
     location: 'Ubicacion',
     provider: 'Proveedor',
     with: 'con',
-    allDay: 'Todo el dia',
+    allDay: 'Todo el día',
     physician: 'Médico',
     assisting: 'Asistencia',
     anesthesia: 'Anestesia',
-    procedures: 'Procedimiento'
+    procedures: 'Procedimiento',
+    number: 'Número',
+    billDate: 'Fecha de Factura',
+    balanceDue: 'Saldo Vencido',
+    amount: 'Monto',
+    datePaid: 'Fecha de Pago',
+    creditTo: 'Crédito a',
+    invoiceId: 'ID de Factura',
+    lineItems: 'Artículos',
+    discount: 'Descuento',
+    excess: 'Exceso',
+    price: 'Precio',
+    total: 'Total',
+    expenseTo: 'Gasto a',
+    grandTotal: 'Monto Total',
+    remarks: 'Observaciones',
+    payments: 'Pagos',
+    category: 'Categoría',
+    department: 'Departamento',
+    address: 'Dirección',
+    country: 'País'
   },
   messages: {
     noItemsFound: 'Elementos no encontrados.',
@@ -306,42 +452,58 @@ export default {
     createNewRecord: '¿Crear un nuevo registro?',
     createNewUser: '¿Crear un nuevo usuario?',
     noUsersFound: 'Ningun usuario encontrado.',
-    areYouSureDelete: 'Estas seguro de eliminar este usuario {{user}}?',
-    userHasBeenSaved: 'El usuario ha sido salvado.',
-    userSaved: 'Usuario salvado',
+    areYouSureDelete: '¿Está seguro que desea eliminar el usuario {{user}}?',
+    userHasBeenSaved: 'El usuario ha sido guardado.',
+    userSaved: 'Usuario guardado',
     onBehalfOf: 'a nombre de',
     newPatientHasToBeCreated: 'Un nuevo paciente debe ser creado...Por favor espere..',
-    noNotesAvailable: 'No hay notas clínicas adicionales están disponibles para esta visita.',
+    noNotesAvailable: 'Notas clínicas adicionales no disponibles para esta visita.',
     sorry: 'Lo sentimos, un error ha ocurrido...',
-    forAuthorizedPersons: 'Este informe es sólo para personas autorizadas.'
+    forAuthorizedPersons: 'Este informe es sólo para personas autorizadas.',
+    requiredFieldsCorrectErrors: 'Por favor complete los campos requeridos (marcados con *) y corrija los errores antes de guardar.',
+    saveActionException: 'Ha ocurrido un error al intentar guardar: {{message}}',
+    reportError: 'Se ha encontrado un error al generar el reporte solicitado. Por favor notifique a su administrador sobre el mismo.'
   },
   alerts: {
-    pleaseWait: 'Por favor espere'
+    pleaseWait: 'Por favor espere',
+    warningExclamation: 'Advertencia!!!!',
+    errorExclamation: 'Error!!!!',
+    reportError: 'Error Generando Reporte'
+  },
+  headings: {
+    chargedItems: 'Artículos Facturados',
   },
   buttons: {
+    addItem: 'Agregar Item',
     complete: 'Completado',
     cancel: 'Cancelar',
     close: 'Cerrar',
     returnButton: 'Regresar',
-    barcode: 'Codigo de barras',
-    add: 'Adicionar',
+    barcode: 'Código de barras',
+    add: 'Agregar',
     update: 'Actualizar',
     ok: 'Ok',
     fulfill: 'Cumplimiento',
     remove: 'Remover',
     delete: 'Eliminar',
     newUser: 'Nuevo usuario',
-    addValue: 'Adicionar valor',
+    addValue: 'Agregar valor',
     newNote: 'Nueva nota',
     import: 'Importar',
     loadFile: 'Cargar archivo',
     newRequest: 'Nueva solicitud',
     allRequests: 'Todas las solicitudes',
-    dispense: 'Repartir',
+    dispense: 'Dispensar',
     newItem: '+ nuevo elemento',
     newRequestPlus: '+ nuevo pedido',
-    addVisit: 'Adicionar visita',
-    search: 'Buscar'
+    addVisit: 'Agregar visita',
+    search: 'Buscar',
+    filter: 'Filtro',
+    clear: 'Limpiar',
+    edit: 'Editar',
+    addLineItem: 'Add Line Item',
+    showFewer: 'Show Fewer',
+    showAll: 'Show All'
   },
   login: {
     messages: {
