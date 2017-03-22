@@ -41,12 +41,14 @@ export default {
     imaging: 'Radiografía',
     inventory: 'Inventario',
     patients: 'Pacientes',
-    appointments: 'Citas',
+    scheduling: 'Agendamiento',
     medication: 'Recetas médicas',
     labs: 'Laboratorio',
     billing: 'Facturas',
     administration: 'Administración',
+    incident: 'Incident',
     subnav: {
+      actions: 'Acciones',
       requests: 'Pedidos',
       items: 'Items',
       completed: 'Completado',
@@ -55,11 +57,11 @@ export default {
       reports: 'Reportes',
       patientListing: 'Lista de pacientes',
       newPatient: 'Nuevo paciente',
-      thisWeek: 'Esta semana',
-      today: 'Hoy',
-      search: 'Buscar',
+      appointmentsThisWeek: 'Citas de esta Semana',
+      "today'sAppointments": 'Citas de hoy',
+      appointmentSearch: 'Búsqueda de Citas',
       addAppointment: 'Nueva cita',
-      dispense: 'Dispense',
+      dispense: 'Dispensar',
       returnMedication: 'Devolver medicamento',
       invoices: 'Facturas',
       newInvoice: 'Nueva factura',
@@ -67,10 +69,23 @@ export default {
       priceProfiles: 'Perfil de precios',
       lookupLists: 'Lista de busuedas',
       addressFields: 'Campos de dirección',
-      loadDb: 'Cargar base de datos',
+      loadDB: 'Cargar base de datos',
       users: 'Usuarios',
       newUser: 'Nuevo usuario',
-      userRoles: 'Roles'
+      admittedPatients: 'Pacientes Admitidos',
+      missedAppointments: 'Citas Perdidas',
+      userRoles: 'Roles',
+      workflow: 'Flujo de Trabajo',
+      outpatient: 'Ambulatorio',
+      customForms: 'Formularios Personalizados',
+      appointmentsCalendar: 'Calendario de Citas',
+      theaterSchedule: 'Agendamiento de Quirófano',
+      scheduleSurgery: 'Agendar Cirugía',
+      printHeader: 'Imprimir Cabecera',
+      currentIncidents: 'Incidentes Actuales',
+      newIncident: 'Nuevo Incidente',
+      history: 'Historial',
+      incidentCategories: 'Categorias de Incidentes'
     },
     actions: {
       logout: 'Salir',
@@ -158,7 +173,7 @@ export default {
         socialworkFormType: 'Trabajo Social',
         text: 'Texto',
         textarea: 'Texto Largo',
-        visitFormType: 'Visita',
+        visitFormType: 'Consulta',
         opdReportFormType: 'Reporte Ambulatorio',
         dischargeReportFormType: 'Reporte Alta'
       },
@@ -226,9 +241,9 @@ export default {
       radiologists: 'Radiologos',
       unitTypes: 'Tipos de unidad',
       vendorList: 'Proveedor',
-      visitLocationList: 'Lugares de visista',
-      visitTypes: 'Tipos de visita',
-      wardPricingTypes: 'Tipos de las tarifas',
+      visitLocationList: 'Lugares de consulta',
+      visitTypes: 'Tipos de consulta',
+      wardPricingTypes: 'Tipos de tarifas',
       messages: {
         deleteLookupValue: '¿Está seguro que desea borrar el valor {{value}}?'
       },
@@ -261,7 +276,7 @@ export default {
         addPhoto: 'Adicionar foto',
         addPatient: 'Adicionar paciente',
         addProcedure: 'Adicionar procedimiento',
-        addVisit: 'Adicionar visita',
+        addVisit: 'Adicionar consulta',
         addVitals: 'Adicionar partes vitales',
         admitPatient: 'Admitir paciente',
         deletePhoto: 'Eliminar foto',
@@ -271,10 +286,10 @@ export default {
         deleteProcedure: 'Eliminar procedimiento',
         deleteSocialwork: 'Eliminar trabajo social',
         deleteVitals: 'Eliminar organo vital',
-        deleteVisit: 'Eliminar visita',
+        deleteVisit: 'Eliminar consulta',
         dischargePatient: 'Dar de Alta paciente',
         patientReports: 'Reportes por paciente',
-        visits: 'Visitas',
+        visits: 'Consultas',
         medication: 'Medicación',
         addMedication: 'Adicionar medicación',
         deleteMedication: 'Eliminar medicación',
@@ -323,10 +338,10 @@ export default {
         followup: 'Seguimiento',
         form: 'Formulario',
         initial: 'Inicial',
-        visitType: 'Tipo de Visita'
+        visitType: 'Tipo de Consulta'
       },
       titles: {
-        visitForms: 'Formularios de Visita'
+        visitForms: 'Formularios de Consulta'
       }
     },
     workflow: {
@@ -378,7 +393,7 @@ export default {
     imagingType: 'Tipo de radiografia',
     result: 'Resultado',
     results: 'Resultados',
-    visit: 'Visita',
+    visit: 'Consulta',
     requests: 'Pedido',
     completed: 'Completado',
     id: 'Id',
@@ -410,7 +425,7 @@ export default {
     deleteUser: 'Eliminar usuario',
     medication: 'Medicación',
     status: 'Estado',
-    addNewOutpatientVisit: '--Nueva visita ambulatoria--',
+    addNewOutpatientVisit: '--Nueva consulta ambulatoria--',
     prescription: 'Receta medica',
     prescriptionDate: 'Fecha de la receta medica',
     billTo: 'Facturar a',
@@ -457,7 +472,7 @@ export default {
     userSaved: 'Usuario guardado',
     onBehalfOf: 'a nombre de',
     newPatientHasToBeCreated: 'Un nuevo paciente debe ser creado...Por favor espere..',
-    noNotesAvailable: 'Notas clínicas adicionales no disponibles para esta visita.',
+    noNotesAvailable: 'Notas clínicas adicionales no disponibles para esta consulta.',
     sorry: 'Lo sentimos, un error ha ocurrido...',
     forAuthorizedPersons: 'Este informe es sólo para personas autorizadas.',
     requiredFieldsCorrectErrors: 'Por favor complete los campos requeridos (marcados con *) y corrija los errores antes de guardar.',
@@ -496,7 +511,7 @@ export default {
     dispense: 'Dispensar',
     newItem: '+ nuevo elemento',
     newRequestPlus: '+ nuevo pedido',
-    addVisit: 'Agregar visita',
+    addVisit: 'Agregar consulta',
     search: 'Buscar',
     filter: 'Filtro',
     clear: 'Limpiar',
@@ -725,7 +740,7 @@ export default {
     },
     labels: {
       radiologist: 'Radiólogo',
-      addNewVisit: '--Adicionar nueva visita--'
+      addNewVisit: '--Adicionar nueva consulta--'
     },
     messages: {
       delete: '¿Está seguro que desea borrar el pedido de radiografía?',
@@ -812,23 +827,71 @@ export default {
     }
   },
   visits: {
-    edit: {
-      buttons: {
-        newAppointment: 'Nuevas citas',
-        addDiagnosis: 'Adicionar diagnostico',
-        newProcedure: 'Nuevo procedimiento',
-        newLab: 'New laboratorio',
-        newMedication: 'Nueva mediicación',
-        newImaging: 'Nueva radiografia'
-      },
-      labels: {
-        diagnosis: 'Diagnostico',
-        procedure: 'Procedimiento',
-        authoredBy: 'Escrito por',
-        labs: 'Laboratorios',
-        imaging: 'Radiografias',
-        visitInformation: 'Informacion de visita'
-      }
+    titles: {
+      additionalDiagnoses: 'Diagnósticos Adicionales',
+      checkedIn: 'Ingreso del Paciente',
+      checkOut: 'Salida del Paciente',
+      checkedOut: 'Salida del Paciente',
+      discharged: 'Alta de Paciente',
+      editVisit: 'Editar Consulta',
+      newVisit: 'Nueva Consulta',
+      patientCheckIn: 'Ingreso del Paciente',
+      visitSaved: 'Consulta Guardada'
+    },
+    messages: {
+      delete: '¿Está seguro que desea eliminar esta consulta?',
+      checkOut: '¿Está seguro que desea registrar la salida de {{patientName}}?',
+      checkedOut: 'Ha sido registrada la salida de {{patientName}}.',
+      discharged: 'Se ha dado de alta a {{patientName}}.',
+      patientCheckedIn: 'Se ha registrado el ingreso de {{patientName}}.',
+      patientCreatedAndCheckedIn: 'Se ha creado al paciente {{patientName}} y registrado su ingreso.',
+      visitAndPatientSaved: 'Los registros de la consulta y el paciente and sigo guardados.',
+      visitSaved: 'El registro de la consulta ha sido guardado.'
+    },
+    buttons: {
+      newProcedure: 'Nuevo Procedimiento',
+      newAppointment: 'Nueva Cita',
+      addDiagnosis: 'Agregar Diagnóstico',
+      newVitals: 'Signos Vitales',
+      checkIn: 'Ingreso',
+      checkOut: 'Salida',
+      discharge: 'Alta'
+    },
+    labels: {
+      diagnosis: 'Diagnóstico',
+      procedure: 'Procedimiento',
+      procedureDate: 'Fecha Procedimiento',
+      authoredBy: 'Autorizado Por',
+      visitInformation: 'Información de Consulta',
+      examiner: 'Examinador Médico',
+      status: 'Estado de Consulta',
+      finalDiagnosis: 'Diagnóstico Final/Facturación',
+      visitDate: 'Fecha de Consulta',
+      visitType: 'Tipo de Consulta',
+      patientToCheckIn: 'Paciente a Ingresar',
+      checkInTime: 'Ingreso',
+      checkOutTime: 'Salida',
+      appointment: 'Cita',
+      haveAppointment: 'S',
+      noAppointment: 'N',
+      ordersDone: 'Órdenes Finalidadas',
+      haveDoneOrders: 'S',
+      ordersNotDone: 'N',
+      reasonForVisit: 'Razón de ConsultaReason For Visit',
+      statusAdmitted: 'Admitido',
+      statusDischarged: 'Dado de Alta',
+      statusCheckedIn: 'Ingresado',
+      statusCheckedOut: 'Salido',
+      createNewPatient: 'Crear Nuevo Paciente',
+      reportType: 'Tipo Reporte'
+    },
+    navigation: {
+      charges: 'Cargas',
+      notes: 'Notas',
+      orders: 'Órdenes',
+      procedures: 'Procedimientos',
+      vitals: 'Signos Vitales',
+      reports: 'Reportes'
     }
   },
   labs: {
@@ -867,7 +930,7 @@ export default {
       general: 'General',
       history: 'Historial',
       appointments: 'Citas',
-      visits: 'Visitas',
+      visits: 'Consultas',
       medication: 'Medicacion',
       imaging: 'Radiografía',
       labs: 'Laboratorios',
@@ -905,7 +968,7 @@ export default {
       patientStatus: 'Estado del Paciente',
       totalPatientDays: 'Dias Totales del Paciente',
       totalPatientDaysDetailed: 'Dias Totales del Paciente (Detallado)',
-      visit: 'Visita',
+      visit: 'Consulta',
       deletePatientRecord: 'Borrar Registro del Paciente',
       outpatientsForDate: 'Ambulatorios para {{visitDate}}'
     },
@@ -926,7 +989,7 @@ export default {
       editOperativePlan: 'Plan Operativo Actual',
       download: 'Descargar',
       newLab: 'Nuevo Laboratorio',
-      newVisit: 'Nueva Visita',
+      newVisit: 'Nueva Consulta',
       newMedication: 'Nueva Medicación',
       newImaging: 'Nueva Radiografía',
       addFamilyMember: 'Agregar Miembro Familiar',
@@ -988,7 +1051,115 @@ export default {
       updateNote: 'Actualizando Nota de',
       onBehalfOfLabel: 'A nombre de',
       onBehalfOfCopy: 'a nombre de',
-      pleaseSelectAVisit: 'Por favor seleccione una visita'
+      pleaseSelectAVisit: 'Por favor seleccione una consulta'
+    }
+  },
+  components: {
+    chargesByTypeTab: {
+      charges: 'cargas'
+    },
+    customFormManager: {
+      buttons: {
+        addForm: 'Agregar Formulario'
+      }
+    },
+    sortableColumn: {
+      labels: {
+        selectAll: '(Seleccionar Todo)'
+      }
+    },
+    imageUpload: {
+      messages: {
+        selectValidImageFile: 'Por favor seleccione un archivo de imágen válido.'
+      }
+    },
+    dateTimePicker: {
+      amHour: '{{hour}} AM',
+      midnight: 'Medianoche',
+      noon: 'Mediodía',
+      pmHour: '{{hour}} PM'
+    },
+    takePhoto: {
+      how: '¿Cómo desea agregar la foto?',
+      takePhoto: 'Tomar Foto',
+      uploadFile: 'Subir un archivo',
+      camera: 'Cámara',
+      photo: 'foto',
+      preview: 'previsualizar',
+      labels: {
+        takeAPicture: 'Tomar una Foto',
+        uploadAFile: 'Subir un Archivo'
+      }
+    },
+    quantityConv: {
+      unit: 'Unidad',
+      conversion: '¿Que contiene 1 {{name}}?'
+    },
+    quantityCalc: {
+      result: '{{targetUnit}} total: {{calculated}}'
+    },
+    patientOrders: {
+      buttons: {
+        newImaging: 'Nueva Radiografía',
+        newLab: 'Nuevo Laboratorio',
+        newMedication: 'Nueva Medicación'
+      },
+      labels: {
+        imagingOrderType: 'Radiografía',
+        labOrderType: 'Laboratorio',
+        medicationOrderType: 'Medicación',
+        orderType: 'Tipo Órden'
+      }
+    },
+    priceList: {
+      charges: '{{pricingType}} cargas'
+    },
+    operativeProcedures: {
+      buttons: {
+        addProcedure: 'Agregar Procedimiento'
+      },
+      labels: {
+        procedure: 'Procedimiento'
+      },
+      titles: {
+        procedures: 'Procedimientos'
+      }
+    },
+    upcomingAppointments: {
+      labels: {
+        date: 'Fecha',
+        with: 'Con',
+        location: 'Lugar',
+        type: 'Tipo'
+      },
+      titles: {
+        upcomingAppointments: 'Próximas Citas'
+      }
+    }
+  },
+  models: {
+    appointment: {
+      labels: {
+        status: 'Nombre',
+        appointmentType: 'Tipo',
+        provider: 'Con',
+        location: 'Lugar',
+        patient: 'Paciente',
+        startDate: 'Fecha Inicio',
+        endDate: 'Fecha Fin',
+        allDay: 'Todo el Día',
+        type: 'Tipo',
+        notes: 'Notas',
+        appointmentDate: 'Fecha'
+      }
+    },
+    patient: {
+      labels: {
+        name: 'Nombre'
+      },
+      names: {
+        singular: 'Paciente'
+      }
     }
   }
 };
