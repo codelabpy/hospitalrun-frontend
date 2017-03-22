@@ -501,9 +501,9 @@ export default {
     filter: 'Filtro',
     clear: 'Limpiar',
     edit: 'Editar',
-    addLineItem: 'Add Line Item',
-    showFewer: 'Show Fewer',
-    showAll: 'Show All'
+    addLineItem: 'Agregar Artículo',
+    showFewer: 'Mostrar Menos',
+    showAll: 'Mostrar Todos'
   },
   login: {
     messages: {
@@ -516,38 +516,58 @@ export default {
       signIn: 'Ingresar'
     }
   },
+  loading: {
+    progressBar: {
+      progress: '{{progressBarValue}}% Completado'
+    },
+    messages: {
+      0: 'La velocidad máxima de una mariposa en vuelo es de 19 km/h. Algunas polillas pueden volar hasta 40 km/h!',
+      1: 'Los Búos son las únicas aves que pueden ver el color azul.',
+      2: 'Los gatos tienen más de 100 sonidos vocales; los perros solo tienen 10.',
+      3: 'El ser humano usa un total de 72 músculos diferentes al hablar.',
+      4: 'Más de 1000 lenguajes diferentes son hablados en el continente Africano.',
+      5: 'La Eritrofobia es el miedo de una persona a ruborizarse.',
+      6: 'La fobia más común en el mundo es la odynofobia, que es el miedo al dolor.',
+      7: 'Tu cuerpo usa 300 músculos para balancearse cuando estás parado.',
+      8: 'Ciertos tipos de sapos pueden seguir vivos incluso si son congelados completamente y luego descongelados.',
+      9: 'Nuestros ojos son siempre del mismo tamaño desde el nacimiento, pero nuestra nariz y oidos nunca paran de crecer.',
+      10: 'La lengua es el único músculo del cuerpo que se encuentra adjunto de sólo un lado.',
+      11: 'Los camellos tienen 3 párpados por cada ojo para protejerse de las arenas del desierto.'
+    }
+  },
   inventory: {
     edit: {
       cost: 'Costo por unidad:',
       delivered: 'Enviado A:',
       location: 'Cambio de ubicación:',
       prescription: 'Recetado por:',
-      pulled: 'Pulled From:',
-      quantity: 'Quantity at Completion:',
+      pulled: 'Retirado de:',
+      quantity: 'Cantidad al Completarse:',
       reason: 'Razón:',
-      returned: 'Regresado al paciente:',
-      transferredFrom: 'Transferido a:',
-      transferredTo: 'Transferido a:'
+      returned: 'Regresado del paciente:',
+      transferredFrom: 'Transferido De:',
+      transferredTo: 'Transferido A:'
     },
     labels: {
       action: 'Acción',
       add: 'Adicionar',
-      adjust: 'Adjustar',
+      adjust: 'Ajustar',
       adjustmentDate: 'Fecha de ajuste',
       adjustmentFor: 'Ajustado para',
       adjustmentType: 'Tipo de ajuste',
       aisle: 'Pasillo',
       aisleLocation: 'Ubicación pasillo',
       allInventory: 'Todo el inventario',
+      availableQuantity: '{{quantity}} disponible',
       billTo: 'Facturao a',
-      consumePurchases: 'Consume Purchases',
+      consumePurchases: 'Compras de Consumo',
       consumptionRate: 'Tasa de consumo',
       cost: 'Costo',
       costPerUnit: 'Costo por Unidad',
       crossReference: 'Referencia cruzada',
       currentQuantity: 'Cantidad actual',
       dateCompleted: 'Fecha completado',
-      dateEffective: 'Gecha efectiva',
+      dateEffective: 'Fecha efectiva',
       dateEnd: 'Fecha final',
       dateStart: 'Fecha inicial',
       dateReceived: 'Fecha recibido',
@@ -563,15 +583,15 @@ export default {
       expirationDate: 'Fecha de vencimiento',
       fulfillRequest: 'Pedido de cumplimiento',
       fulfillRequestNow: 'Pedido de incumplimiento para hoy',
-      gift: 'Regalo en especie',
-      giftUsage: 'Uso del regalo en especie',
+      gift: 'Regalo en amabilidad',
+      giftUsage: 'Uso del regalo en amabilidad',
       giftInKindNo: 'N',
       giftInKindYes: 'Y',
       inventoryConsumed: 'Inventario consumido',
       inventoryItem: 'Elemento del inventario',
       inventoryObsolence: 'Obsolescencia de inventario',
       invoiceItems: 'Articulos de factura',
-      invoiceLineItem: 'Elemento de la factura linea',
+      invoiceLineItem: 'Artículo',
       invoiceNumber: 'Factura numero',
       item: 'Elemento',
       items: 'Elementos',
@@ -581,6 +601,7 @@ export default {
       name: 'Nombre',
       markAsConsumed: 'Marcar como consumido',
       newItem: 'Nuevo elemento',
+      allItems: 'Todos los Elementos',
       originalQuantity: 'Cantidad original',
       print: 'Imprimir',
       printBarcode: 'Imprimir codigo de  barras',
@@ -591,7 +612,7 @@ export default {
       purchaseInfo: 'Informacion de la compra',
       quantity: 'Cantidad ({{unit}})',
       quantityAvailable: 'Cantidad disponible',
-      quantityOnHand: 'Cantidad a la mano',
+      quantityOnHand: 'Cantidad a mano',
       quantityRequested: 'Cantidad pedida',
       rank: 'Ranking',
       reason: 'Razón',
@@ -603,7 +624,7 @@ export default {
       serialNumber: 'Serial/Numero de lote',
       total: 'Total',
       totalCost: 'Costo total',
-      totalReceived: 'Total Recivido: {{total}}',
+      totalReceived: 'Total Recibido: {{total}}',
       transaction: 'Transaccion',
       transactions: 'Transacciones',
       transfer: 'Translados',
@@ -617,17 +638,17 @@ export default {
       xref: 'XRef'
     },
     messages: {
-      adjust: 'Por favor ajust las cantidades en la ubicación adecuada(s) la diferencia de la cuenta es {{difference}}.',
+      adjust: 'Por favor ajuste las cantidades en la(s) ubicación(es) adecuada(s) la diferencia de la cuenta es {{difference}}.',
       createRequest: '¿Crear un nuevo pedido?',
-      delete: 'Estas seguro de eliminar {{name}}?',
-      itemNotFound: 'El elemento del inventario <strong>{{item}}</strong> no se pudo encontrar.<br>Si desea crear un nuevo elemento, Ingrese la información abajo.<br>De lo contrario opria cancelar para volver.',
+      delete: '¿Estás seguro de eliminar {{name}}?',
+      itemNotFound: 'El elemento del inventario <strong>{{item}}</strong> no se pudo encontrar.<br>Si desea crear un nuevo elemento, Ingrese la información abajo.<br>De lo contrario oprima cancelar para volver.',
       loading: 'Cargando transacciones ...',
-      purchaseSaved: 'La compra de inventario ha sido salvada.',
+      purchaseSaved: 'La compra de inventario ha sido guardada.',
       noRequests: 'No se encontraron pedidos.',
       noItems: 'No se encontraron elementos.',
       quantity: 'La cantidad total <strong>({{quantity}})</strong> no encaja con la cantidad total en las ubicaciones <strong>({{locationQuantity}})</strong>.',
-      removeItem: 'Esta seguro de eliminar este elemento de la factura?',
-      removeItemRequest: 'Seguro que quiere eliminar este elemento del pedido?',
+      removeItem: '¿Está seguro de eliminar este elemento de la factura?',
+      removeItemRequest: '¿Está seguro que quiere eliminar este elemento del pedido?',
       requestFulfilled: 'El pedido de inventario ha sido procesado.',
       requestUpdated: 'El pedido de inventario ha sido actualizado.',
       warning: 'Valide los campos requeridos (marcados con *) corrija los errores antes de adicionar.'
@@ -649,7 +670,7 @@ export default {
         errInFindPur: 'Error en _findInventoryItemsByPurchase: ',
         errInFindReq: 'Error en _findInventoryItemsByRequest: ',
         expensesFor: 'Gatos para: ',
-        noAccount: '(No Cuenta)',
+        noAccount: '(Sin Cuenta)',
         subtotal: 'Subtotal: ',
         subtotalFor: 'Subtotal para {{category}} - {{account}}: ',
         total: 'Total: ',
@@ -675,7 +696,9 @@ export default {
       stockTransferDetail: 'Detalle de traslado de stock',
       stockTransferSum: 'Resumen traslado de stock',
       stockUsageDetail: 'Detalle de uso de stock',
-      stockUsageSum: 'Resumen uso de stock'
+      stockUsageSum: 'Resumen de uso de stock',
+      titleSingleDate: 'Informe {{name}} {{date}}',
+      titleDateRange: 'Informe {{name}} {{startDate}} - {{endDate}}'
     },
     titles: {
       addPurchase: 'Adicionar compra',
@@ -691,21 +714,22 @@ export default {
       requestFulfilled: 'Pedido cumplido',
       requestUpdated: 'Pedido actualizado',
       transfer: 'Trasladar elementos',
-      warning: 'Peligro!!!!!'
+      warning: 'Atención!!!!!'
     }
   },
   imaging: {
-    pageTitle: 'Pedido de radriografia',
+    pageTitle: 'Pedido de radriografía',
     sectionTitle: 'Radiografias',
     buttons: {
-      newButton: '+ new radiografia'
+      newButton: '+ new radiografía'
     },
     labels: {
-      radiologist: 'Radiologo',
+      radiologist: 'Radiólogo',
       addNewVisit: '--Adicionar nueva visita--'
     },
     messages: {
-      noCompleted: 'No de items encontrados.'
+      delete: '¿Está seguro que desea borrar el pedido de radiografía?',
+      noCompleted: 'No se han encontrado items completados.'
     },
     titles: {
       completedImaging: 'Radiografia completada',
@@ -715,7 +739,7 @@ export default {
     alerts: {
       completedTitle: 'Pedido de radiografia completado',
       completedMessage: 'El pedido de radiografia ha sido completado.',
-      savedTitle: 'Pedido de radiografia salvado',
+      savedTitle: 'Pedido de radiografia guardado',
       savedMessage: 'El pedido de radiografia ha sido guardado.'
     }
   },
@@ -766,12 +790,25 @@ export default {
     missed: 'Citas perdidas',
     searchTitle: 'Buscar citas',
     todayTitle: 'Citas para hoy',
+    calendarTitle: 'Calendario de Citas',
     messages: {
-      deleteAppointmentMessage: 'Esta seguro de eliminar esta cita?',
+      appointmentSaved: 'La cita para {{patient}} ha sido guardada.',
+      deleteAppointmentMessage: '¿Está seguro de eliminar esta cita?',
       endTimeLaterThanStart: 'Seleccione una hora de finalizacion despues de la de inicio.'
     },
     buttons: {
-      newButton: '+ nueva cita'
+      newButton: '+ nueva cita',
+      scheduleSurgery: '+ agendar cirugía'
+    },
+    labels: {
+      noLocation: 'Sin Ubicación',
+      selectedStartingDate: 'Mostrar Citas en o después de'
+    },
+    titles: {
+      appointmentSaved: 'Cita Guardada',
+      editSurgicalAppointment: 'Editar Agendamiento Quirúrgico',
+      newSurgicalAppointment: 'Nuevo Agendamiento Quirúrgico',
+      theaterSchedule: 'Agendamiento de Quirófano'
     }
   },
   visits: {
@@ -806,10 +843,10 @@ export default {
       addNewVisit: '--Adicionar nueva visita--'
     },
     messages: {
-      noItemsFound: 'No boratorios encontrados.',
-      createNewRecord: 'Crear un registro?',
-      confirmDeletion: 'Esta seguro de eliminar esta solicitud de laboratorio?',
-      noCompleted: 'No elementos completados encontrados.'
+      noItemsFound: 'No laboratorios encontrados.',
+      createNewRecord: '¿Crear un registro?',
+      confirmDeletion: '¿Está seguro de eliminar esta solicitud de laboratorio?',
+      noCompleted: 'No se encontraron elementos completados.'
     },
     buttons: {
       newButton: '+ nuevo laboratorio'
@@ -817,7 +854,7 @@ export default {
     alerts: {
       requestCompletedTitle: 'Pedido de laboratorio competado',
       requestCompletedMessage: 'El pedido de laboratorio ha sido completado.',
-      requestSavedTitle: 'Silicitud de laboratorio guardado',
+      requestSavedTitle: 'Pedido de laboratorio guardado',
       requestSavedMessage: 'El pedido de laboratorio ha sido guardado.'
     }
   },
