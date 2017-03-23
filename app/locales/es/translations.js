@@ -46,7 +46,7 @@ export default {
     labs: 'Laboratorio',
     billing: 'Facturas',
     administration: 'Administración',
-    incident: 'Incident',
+    incident: 'Incidentes',
     subnav: {
       actions: 'Acciones',
       requests: 'Pedidos',
@@ -67,7 +67,7 @@ export default {
       newInvoice: 'Nueva factura',
       prices: 'Precios',
       priceProfiles: 'Perfil de precios',
-      lookupLists: 'Lista de busuedas',
+      lookupLists: 'Lista de busquedas',
       addressFields: 'Campos de dirección',
       loadDB: 'Cargar base de datos',
       users: 'Usuarios',
@@ -81,7 +81,7 @@ export default {
       appointmentsCalendar: 'Calendario de Citas',
       theaterSchedule: 'Agendamiento de Quirófano',
       scheduleSurgery: 'Agendar Cirugía',
-      printHeader: 'Imprimir Cabecera',
+      printHeader: 'Cabecera de Impresiones',
       currentIncidents: 'Incidentes Actuales',
       newIncident: 'Nuevo Incidente',
       history: 'Historial',
@@ -151,7 +151,7 @@ export default {
         newForm: '+ nuevo formulario',
         preview: 'Previsualizar'
 
-    },
+      },
       labels: {
         alwaysInclude: 'Incluir siempre',
         checkbox: 'Checkbox',
@@ -191,7 +191,7 @@ export default {
         dropDownValues: 'Valores Dropdown',
         newCustomForm: 'Nuevo Formulario Personalizado',
         radioValues: 'Valores Radio'
-      },
+      }
     },
     loaddb: {
       progressMessage: 'Por favor espere mientras la base de datos es cargada.',
@@ -486,7 +486,7 @@ export default {
     reportError: 'Error Generando Reporte'
   },
   headings: {
-    chargedItems: 'Artículos Facturados',
+    chargedItems: 'Artículos Facturados'
   },
   buttons: {
     addItem: 'Agregar Item',
@@ -571,10 +571,10 @@ export default {
       adjustmentFor: 'Ajustado para',
       adjustmentType: 'Tipo de ajuste',
       aisle: 'Pasillo',
-      aisleLocation: 'Ubicación pasillo',
+      aisleLocation: 'Ubicación del pasillo',
       allInventory: 'Todo el inventario',
       availableQuantity: '{{quantity}} disponible',
-      billTo: 'Facturao a',
+      billTo: 'Facturado a',
       consumePurchases: 'Compras de Consumo',
       consumptionRate: 'Tasa de consumo',
       cost: 'Costo',
@@ -591,9 +591,9 @@ export default {
       deliveryAisle: 'Enviado a pasillo',
       deliveryLocation: 'Ubicación del envio',
       distributionUnit: 'Unidad de distribución',
-      deleteItem: 'Eliminar elemento',
+      deleteItem: 'Eliminar item',
       details: 'Detalles',
-      editItem: 'Editar elemento',
+      editItem: 'Editar item',
       expense: 'Gastos a',
       expirationDate: 'Fecha de vencimiento',
       fulfillRequest: 'Pedido de cumplimiento',
@@ -601,16 +601,16 @@ export default {
       gift: 'Regalo en amabilidad',
       giftUsage: 'Uso del regalo en amabilidad',
       giftInKindNo: 'N',
-      giftInKindYes: 'Y',
+      giftInKindYes: 'S',
       inventoryConsumed: 'Inventario consumido',
       inventoryItem: 'Elemento del inventario',
       inventoryObsolence: 'Obsolescencia de inventario',
       invoiceItems: 'Articulos de factura',
       invoiceLineItem: 'Artículo',
       invoiceNumber: 'Factura numero',
-      item: 'Elemento',
-      items: 'Elementos',
-      itemNumber: 'Numero de elemento',
+      item: 'Item',
+      items: 'Items',
+      itemNumber: 'Numero de item',
       location: 'Ubicación',
       locations: 'Ubicaciones',
       name: 'Nombre',
@@ -633,7 +633,7 @@ export default {
       reason: 'Razón',
       remove: 'Remover',
       reorderPoint: 'Reordenar punto',
-      requestedItems: 'Elementos solicitados',
+      requestedItems: 'Items solicitados',
       salePricePerUnit: 'Costo de venta por unidad',
       save: 'Guardar',
       serialNumber: 'Serial/Numero de lote',
@@ -660,10 +660,10 @@ export default {
       loading: 'Cargando transacciones ...',
       purchaseSaved: 'La compra de inventario ha sido guardada.',
       noRequests: 'No se encontraron pedidos.',
-      noItems: 'No se encontraron elementos.',
+      noItems: 'No se encontraron items.',
       quantity: 'La cantidad total <strong>({{quantity}})</strong> no encaja con la cantidad total en las ubicaciones <strong>({{locationQuantity}})</strong>.',
-      removeItem: '¿Está seguro de eliminar este elemento de la factura?',
-      removeItemRequest: '¿Está seguro que quiere eliminar este elemento del pedido?',
+      removeItem: '¿Está seguro de eliminar este item de la factura?',
+      removeItemRequest: '¿Está seguro que quiere eliminar este item del pedido?',
       requestFulfilled: 'El pedido de inventario ha sido procesado.',
       requestUpdated: 'El pedido de inventario ha sido actualizado.',
       warning: 'Valide los campos requeridos (marcados con *) corrija los errores antes de adicionar.'
@@ -721,7 +721,7 @@ export default {
       adjustment: 'Ajuste',
       editPurchase: 'Editar compra',
       editRequest: 'Editar pedido',
-      inventoryItem: 'Nuevo elemento de inventario',
+      inventoryItem: 'Nuevo item de inventario',
       inventoryReport: 'Reporte de inventario',
       purchaseSaved: 'Compras de inventario guardadas',
       quickAddTitle: 'Nuevo elemento de inventario',
@@ -756,6 +756,105 @@ export default {
       completedMessage: 'El pedido de radiografia ha sido completado.',
       savedTitle: 'Pedido de radiografia guardado',
       savedMessage: 'El pedido de radiografia ha sido guardado.'
+    }
+  },
+  incident: {
+    buttons: {
+      add: 'Agregar',
+      addForm: '+ Agregar Formulario',
+      addItem: 'Agregar Item',
+      cancel: 'Cancelar',
+      delete: 'Borrar',
+      download: 'Descargar',
+      edit: 'Editar',
+      export: 'Exportar Reporte',
+      generateRep: 'Generar Reporte',
+      newAttachment: '+ Nuevo Adjunto',
+      newCategory: '+ nueva categoría',
+      newIncident: '+ nuevo incidente',
+      newNote: '+ Nueva Nota'
+    },
+    labels: {
+      actions: 'Acciones',
+      addedBy: 'Agregado Por',
+      category: 'Categoría',
+      categoryItem: 'Item Categoría',
+      date: 'Fecha',
+      dateRecorded: 'Fecha Registrada',
+      department: 'Departamento',
+      description: 'Descripción del Incidente',
+      endDate: 'Fecha Fin',
+      givenBy: 'Ofrecido Por',
+      howToAddAttachment: '¿Cómo desea agrgar el adjunto?',
+      incidentDate: 'Fecha del Incidente',
+      incidentId: 'Incidente ID',
+      item: 'Item',
+      lastUpdated: 'Ultima Modificación',
+      note: 'Nota',
+      patientId: 'Paciente Id',
+      patientImpacted: 'Paciente Impactado',
+      reportType: 'Tipo Reporte',
+      reportedBy: 'Reportado Por',
+      reportedDate: 'Fecha Reportada',
+      reportedTo: 'Incidente Reportado a (Nombre Completo)',
+      sentinelEvent: 'Signo (o incidente) de Alerta',
+      startDate: 'Fecha de Inicio',
+      status: 'Estado',
+      statusActive: 'Activo',
+      statusClosed: 'Cerrado',
+      statusFollowup: 'Seguimiento',
+      statusReported: 'Reportado',
+      title: 'Título',
+      total: 'Total',
+      updatedBy: 'Actualizado Por'
+    },
+    messages: {
+      attachmentFileRequired: 'Por favor suba un archivo o tome una foto antes de guardar este adjunto.',
+      createNew: '¿Crear un nuevo incidente?',
+      createNewIncidentCategory: '¿Crear una nueva Categoría de Incidente?',
+      deleteAttachment: '¿Está seguro que desea borrar el adjunto?',
+      deleteCategory: '¿Está seguro que desea eliminar {{name}}?',
+      deleteIncident: '¿Está seguro que desea eliminar este incidente?',
+      deleteItem: '¿Está seguro que desea eliminar este item?',
+      deleteNote: '¿Está seguro que desea elimnar esta nota?',
+      fillIn: 'Complete las opciones de abajo para calcular el puntaje',
+      incidentCategorySaved: 'La categoría {{name}} ha sido guardada.',
+      noClosedIncidents: 'No se encontraron incidentes cerrados.',
+      noIncidentCategoriesFound: 'No se encontraron Categorías de Incidentes.',
+      noIncidents: 'No se encontraron incidentes.',
+      saved: 'El reporte de incidente ha sido guardado.',
+      selectExistingPatient: 'Por favor seleccione un paciente existente o deje este campo en blanco.'
+    },
+    titles: {
+      addAttachment: 'Agregar Adjunto',
+      addCategoryItem: 'Agrgar Categría de Item',
+      addNote: 'Agregar Nota',
+      attachments: 'Adjuntos',
+      closed: 'Incidentes Cerrados',
+      current: 'Actual',
+      deleteAttachment: 'Borrar Adjunto',
+      deleteIncident: 'Borrar Incidente',
+      deleteIncidentCategory: 'Borrar Categoría de Incidente',
+      deleteItem: 'Borrar Item',
+      deleteNote: 'Borrar Nota',
+      editAttachment: 'Editar Adjunto',
+      editIncident: 'Editar Incidente',
+      editIncidentCategory: 'Editar Categoría de Incidente',
+      editNote: 'Editar Nota',
+      general: 'Información General',
+      history: 'Historial',
+      incidentCategories: 'Categorías de Incidente',
+      incidentCategoryItem: 'Item de Categoría de Incidente',
+      incidentCategoryName: 'Nombre de la Categoría de Incidente',
+      incidentCategorySaved: 'Categoría de Incidente Guardada',
+      incidentSaved: 'Incidente Guardado',
+      incidents: 'Incidentes',
+      incidentsByCategory: 'Incidentes Por Categoría',
+      incidentsByDepartment: 'Incidentes Por Departamento',
+      newIncident: 'Nuevo Incidente',
+      newIncidentCategory: 'Nueva Categoría de Incidente',
+      notes: 'Notas',
+      reports: 'Reportes'
     }
   },
   medication: {
@@ -1135,6 +1234,14 @@ export default {
       titles: {
         upcomingAppointments: 'Próximas Citas'
       }
+    }
+  },
+  application: {
+    messages: {
+      sessionExpired: 'Su sesión ha expirado. Por favor, inicie una nueva sesión para continuar.'
+    },
+    titles: {
+      sessionExpired: 'Sesión Expirada'
     }
   },
   models: {
