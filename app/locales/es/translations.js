@@ -253,12 +253,12 @@ export default {
     },
     roles: {
       capability: {
-        admin: 'Administracion',
+        admin: 'Administración',
         loadDb: 'Cargar base de datos',
-        updateConfig: 'Actualizar configuracion',
+        updateConfig: 'Actualizar configuración',
         appointments: 'Citas',
         addAppointment: 'Adicionar cita',
-        billing: 'Facturacion',
+        billing: 'Facturación',
         addCharge: 'Adicionar cargo (valor)',
         addPricing: 'Adicionar precio',
         addPricingProfile: 'Adicionar perfil de precios',
