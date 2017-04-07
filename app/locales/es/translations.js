@@ -124,15 +124,15 @@ export default {
     },
     header: {
       facilityName: 'Nombre de Establecimiento',
-      headerLine1: 'Encabezado Line 1',
-      headerLine2: 'Encabezado Line 2',
-      headerLine3: 'Encabezado Line 3',
+      headerLine1: 'Encabezado Linea 1',
+      headerLine2: 'Encabezado Linea 2',
+      headerLine3: 'Encabezado Linea 3',
       logoURL: 'URL del Logo',
-      includeFacilityName: 'Include Facility Name',
-      includeHeaderLine1: 'Include Header Line 1',
-      includeHeaderLine2: 'Include Header Line 2',
-      includeHeaderLine3: 'Include Header Line 3',
-      includeLogoURL: 'Include Logo URL',
+      includeFacilityName: 'Incluir Nombre del establecimiento',
+      includeHeaderLine1: 'Incluir Encabezado Linea 1',
+      includeHeaderLine2: 'Incluir Encabezado Linea 2',
+      includeHeaderLine3: 'Incluir Encabezado Linea 3',
+      includeLogoURL: 'Incluir URL del Logo',
       titles: {
         optionsSaved: 'Opciones Guardadas'
       },
