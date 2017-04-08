@@ -100,7 +100,7 @@ export default {
   admin: {
     addressOptions: 'Opciones de direcciones',
     lookupLists: 'Lista de busqueda',
-    loadDb: 'Cargar Base de datos',
+    loadDb: 'Cargar Base de Datos',
     userRoles: 'Roles',
     users: 'Usuarios',
     address: {
@@ -368,7 +368,7 @@ export default {
   labels: {
     cptcode: 'Codigo CPT',
     loading: 'Cargando',
-    name: 'Nombre',
+    name: 'Nombre: ',
     note: 'Nota',
     patient: 'Paciente',
     prescriber: 'Médico',
@@ -553,15 +553,15 @@ export default {
   inventory: {
     edit: {
       cost: 'Costo por unidad:',
-      delivered: 'Enviado A:',
+      delivered: 'Enviado a:',
       location: 'Cambio de ubicación:',
       prescription: 'Recetado por:',
       pulled: 'Retirado de:',
       quantity: 'Cantidad al Completarse:',
       reason: 'Razón:',
       returned: 'Regresado del paciente:',
-      transferredFrom: 'Transferido De:',
-      transferredTo: 'Transferido A:'
+      transferredFrom: 'Transferido de:',
+      transferredTo: 'Transferido a:'
     },
     labels: {
       action: 'Acción',
@@ -613,7 +613,7 @@ export default {
       itemNumber: 'Numero de item',
       location: 'Ubicación',
       locations: 'Ubicaciones',
-      name: 'Nombre',
+      name: 'Nombre: ',
       markAsConsumed: 'Marcar como consumido',
       newItem: 'Nuevo elemento',
       allItems: 'Todos los Elementos',
@@ -1099,17 +1099,17 @@ export default {
       patientCheckIn: 'Check In del Paciente',
       newOPDReport: 'New OPD Report',
       newDischargeReport: 'New Discharge Report',
-      scheduleSurgery: 'Schedule Surgery'
+      scheduleSurgery: 'Agendar Cirugia'
     },
     labels: {
-      primaryDiagnosis: 'Primary Diagnoses',
-      secondaryDiagnosis: 'Secondary Diagnoses',
+      primaryDiagnosis: 'Diagnostico Primario',
+      secondaryDiagnosis: 'Diagnosticos Secundarios',
       monthlyCost: 'Monthly Cost',
       totalMontlyExpense: 'Total Monthly Expenses',
-      patientType: 'Patient Type',
-      admissionDate: 'Admission Date',
+      patientType: 'Tipo de Paciente',
+      admissionDate: 'Fecha de Admision',
       patientDays: 'Patient Days',
-      dischargeDate: 'Discharge Date',
+      dischargeDate: 'Fecha de Alta',
       admit: 'Admit',
       relationships: 'Relationships',
       phone: 'Phone',
@@ -1134,13 +1134,13 @@ export default {
       externalPatientId: 'Id Externo del Paciente',
       bloodType: 'Tipo de Sangre',
       clinic: 'Clinic Site',
-      referredBy: 'Referred By',
-      referredDate: 'Referred Date',
+      referredBy: 'Derivado por: ',
+      referredDate: 'Fecha de Derivacion: ',
       religion: 'Religión',
-      parent: 'Parent/Guardian',
+      parent: 'Padre/Tutor',
       contacts: 'Contactos',
       sexNotEntered: 'Sex Not Entered',
-      operativePlan: 'Operative Plan',
+      operativePlan: 'Plan Operativo',
       caption: 'Precausión',
       patientTypeCharity: 'Charity',
       patientTypePrivate: 'Privado'
@@ -1149,7 +1149,7 @@ export default {
       newNote: 'Nueva Nota para',
       updateNote: 'Actualizando Nota de',
       onBehalfOfLabel: 'A nombre de',
-      onBehalfOfCopy: 'a nombre de',
+      onBehalfOfCopy: 'A nombre de',
       pleaseSelectAVisit: 'Por favor seleccione una consulta'
     }
   },
@@ -1247,7 +1247,7 @@ export default {
   models: {
     appointment: {
       labels: {
-        status: 'Nombre',
+        status: 'Estado',
         appointmentType: 'Tipo',
         provider: 'Con',
         location: 'Lugar',
@@ -1262,11 +1262,31 @@ export default {
     },
     patient: {
       labels: {
-        name: 'Nombre'
+        name: 'Nombre: '
       },
       names: {
-        singular: 'Paciente'
+        singular: 'Paciente: '
       }
     }
+  }
+  vitals:{
+	labels: {
+		temperature: 'Temperatura',
+		weight: 'Peso',
+		height: 'Altura',
+		sbp: 'PAS',
+		dbp: 'PAD',
+		heartRate: 'Frecuencia Cardiaca',
+		respiratoryRate: 'Frecuencia Respiratoria',
+		dateRecorded: 'Fecha del Registro',
+	}
+  }
+  allergies: {
+	labels: {
+		patientAllergy: 'Alergias',
+	}
+	buttons: {
+		addAllergy: 'Agregar Alergias',
+	}
   }
 };
