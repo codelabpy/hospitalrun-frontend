@@ -1268,7 +1268,7 @@ export default {
         singular: 'Paciente: '
       }
     }
-  }
+  },
   vitals:{
 	labels: {
 		temperature: 'Temperatura',
@@ -1278,15 +1278,15 @@ export default {
 		dbp: 'PAD',
 		heartRate: 'Frecuencia Cardiaca',
 		respiratoryRate: 'Frecuencia Respiratoria',
-		dateRecorded: 'Fecha del Registro',
+		dateRecorded: 'Fecha del Registro'
 	}
-  }
+  },
   allergies: {
 	labels: {
-		patientAllergy: 'Alergias',
-	}
+		patientAllergy: 'Alergias'
+	},
 	buttons: {
-		addAllergy: 'Agregar Alergias',
+		addAllergy: 'Agregar Alergias'
 	}
   }
 };
