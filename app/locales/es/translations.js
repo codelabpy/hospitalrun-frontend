@@ -976,7 +976,7 @@ export default {
       ordersDone: 'Órdenes Finalidadas',
       haveDoneOrders: 'S',
       ordersNotDone: 'N',
-      reasonForVisit: 'Razón de ConsultaReason For Visit',
+      reasonForVisit: 'Razón de Consulta',
       statusAdmitted: 'Admitido',
       statusDischarged: 'Dado de Alta',
       statusCheckedIn: 'Ingresado',
@@ -1112,7 +1112,7 @@ export default {
       dischargeDate: 'Fecha de Alta',
       admit: 'Admit',
       relationships: 'Relationships',
-      phone: 'Phone',
+      phone: 'Telefono',
       email: 'Email',
       firstName: 'Primer Nombre',
       middleName: 'Segundo Nombre',
@@ -1133,9 +1133,9 @@ export default {
       status: 'Estado del paciente',
       externalPatientId: 'Id Externo del Paciente',
       bloodType: 'Tipo de Sangre',
-      clinic: 'Clinic Site',
+      clinic: 'Lugar clinico',
       referredBy: 'Derivado por: ',
-      referredDate: 'Fecha de Derivacion: ',
+      referredDate: 'Fecha de Derivación: ',
       religion: 'Religión',
       parent: 'Padre/Tutor',
       contacts: 'Contactos',
@@ -1151,6 +1151,30 @@ export default {
       onBehalfOfLabel: 'A nombre de',
       onBehalfOfCopy: 'A nombre de',
       pleaseSelectAVisit: 'Por favor seleccione una consulta'
+    }
+  },
+  billing: {
+    alerts: {
+      noInvoiceFound: 'No invoices found',
+      deleteItem: 'Are you sure you wish to delete {{item}}?',
+      noPricingItems: 'No pricing items found.',
+      noPricingProfiles: 'No pricing profiles found.'
+    },
+    buttons: {
+      createInvoice: 'Create an invoice?',
+      addOverride: 'Add Override'
+    },
+    labels: {
+      externalInvoiceNumber: 'Factura externa #',
+      paymentProfile: 'Perfil de pago',
+      actualCharges: 'Cargos actuales',
+      insurance: 'National Insurance',
+      hmoCom: 'HMO/COM',
+      paymentsDeposits: 'Pagos/Depositos',
+      pricingPanelOverrides: 'Pricing profile overrides',
+      pricingProfile: 'Perfil de precio',
+      discountAmount: 'Cantidad de descuento',
+      discountPercentage: 'Porcentaje de descuento'
     }
   },
   components: {
@@ -1236,6 +1260,57 @@ export default {
       }
     }
   },
+  diagnosis: {
+    labels: {
+      activeDiagnosis: 'Diagnostico activo',
+      date: 'Fecha',
+      diagnosis: 'Diagnostico',
+      secondaryDiagnosis: 'Diagnostico secundario'
+    },
+    titles: {
+      addDiagnosis: 'Agregar Diagnostico',
+      editDiagnosis: 'Editar Diagnostico'
+    }
+  },
+  allergies: {
+    buttons: {
+      addAllergy: 'Agregar Alergia'
+    },
+    titles: {
+      addAllergy: 'Agregar Alergia',
+      editAllergy: 'Editar Alergia'
+    },
+    labels: {
+      allergyName: 'Nombre',
+      patientAllergy: 'Alergias del paciente'
+    }
+  },
+  operativePlan: {
+    buttons: {
+      completePlan: 'Completar plan'
+    },
+    labels: {
+      additionalNotes: 'Agregar notas',
+      admissionInstructions: 'Instrucciones luego de la admisión',
+      caseComplexity: 'Complejidad del caso',
+      completedStatus: 'Completado',
+      droppedStatus: 'Eliminado',
+      operationDescription: 'Descripción de la operación',
+      plannedStatus: 'Planificado',
+      status: 'Estado',
+      surgeon: 'Cirujano'
+    },
+    messages: {
+      planSaved: 'El plan operativo ha sido guardado',
+      planCompleted: 'El plan operativo ha sido completado.  Ahora se le dirigirá al informe de operación.'
+    },
+    titles: {
+      editTitle: 'Editar Plan de operación',
+      newTitle: 'Nuevo plan de operación',
+      planCompleted: 'Plan completado',
+      planSaved: 'Plan guardado'
+    }
+  },
   application: {
     messages: {
       sessionExpired: 'Su sesión ha expirado. Por favor, inicie una nueva sesión para continuar.'
@@ -1270,23 +1345,23 @@ export default {
     }
   },
   vitals:{
-	labels: {
-		temperature: 'Temperatura',
-		weight: 'Peso',
-		height: 'Altura',
-		sbp: 'PAS',
-		dbp: 'PAD',
-		heartRate: 'Frecuencia Cardiaca',
-		respiratoryRate: 'Frecuencia Respiratoria',
-		dateRecorded: 'Fecha del Registro'
-	}
+	  labels: {
+      temperature: 'Temperatura',
+      weight: 'Peso',
+      height: 'Altura',
+      sbp: 'PAS',
+      dbp: 'PAD',
+      heartRate: 'Frecuencia Cardiaca',
+      respiratoryRate: 'Frecuencia Respiratoria',
+      dateRecorded: 'Fecha del Registro'
+	  }
   },
   allergies: {
-	labels: {
-		patientAllergy: 'Alergias'
-	},
-	buttons: {
-		addAllergy: 'Agregar Alergias'
-	}
+    labels: {
+      patientAllergy: 'Alergias'
+    },
+    buttons: {
+      addAllergy: 'Agregar Alergias'
+    }
   }
 };
