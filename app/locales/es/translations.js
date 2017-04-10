@@ -867,7 +867,7 @@ export default {
       returnMedication: 'devolver medicación'
     },
     titles: {
-      completedMedication: 'Medicacion completada',
+      completedMedication: 'Medicación completada',
       editMedicationRequest: 'Editar pedido de medicación',
       newMedicationRequest: 'Nuevo pedido de medicación'
     },
@@ -888,9 +888,9 @@ export default {
       creditToAccount: 'Credito a cuenta'
     },
     alerts: {
-      returnedTitle: 'Medicacion devuelta',
-      returnedMessage: 'La medicacion ha sido marcada para devolver.',
-      savedTitle: 'Pedido de medicacion guardado',
+      returnedTitle: 'Medicación devuelta',
+      returnedMessage: 'La medicación ha sido marcada para devolver.',
+      savedTitle: 'Pedido de medicación guardado',
       savedMessage: 'La elemento de medicación ha sido guardado.',
       fulfilledTitle: 'Pedido de medicación cumplido'
     }
@@ -1030,7 +1030,7 @@ export default {
       history: 'Historial',
       appointments: 'Citas',
       visits: 'Consultas',
-      medication: 'Medicacion',
+      medication: 'Medicación',
       imaging: 'Radiografía',
       labs: 'Laboratorios',
       socialWork: 'Trabajo Social'
@@ -1357,11 +1357,16 @@ export default {
 	  }
   },
   allergies: {
-    labels: {
-      patientAllergy: 'Alergias'
-    },
     buttons: {
       addAllergy: 'Agregar Alergias'
+    },
+    titles: {
+      addAllergy: 'Agregar alergia',
+      editAllergy: 'Editar alergia'
+    },
+    labels: {
+      allergyName: 'Nombre',
+      patientAllergy: 'Alergias del paciente'
     }
   }
 };
