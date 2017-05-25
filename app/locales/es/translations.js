@@ -1344,8 +1344,8 @@ export default {
       }
     }
   },
-  vitals:{
-	  labels: {
+  vitals: {
+    labels: {
       temperature: 'Temperatura',
       weight: 'Peso',
       height: 'Altura',
@@ -1354,19 +1354,6 @@ export default {
       heartRate: 'Frecuencia Cardiaca',
       respiratoryRate: 'Frecuencia Respiratoria',
       dateRecorded: 'Fecha del Registro'
-	  }
-  },
-  allergies: {
-    buttons: {
-      addAllergy: 'Agregar Alergias'
-    },
-    titles: {
-      addAllergy: 'Agregar alergia',
-      editAllergy: 'Editar alergia'
-    },
-    labels: {
-      allergyName: 'Nombre',
-      patientAllergy: 'Alergias del paciente'
     }
   }
 };
