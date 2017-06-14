@@ -16,6 +16,7 @@ RUN rm -rf hospitalrun-frontend-node6.10.1_node_modules.zip
 RUN wget -c http://codelab.com.py/DEPOT/hospitalrun-frontend-node6.10.1_bower_components.zip
 RUN unzip -o hospitalrun-frontend-node6.10.1_bower_components.zip
 RUN rm -rf hospitalrun-frontend-node6.10.1_bower_components.zip
+RUN npm rebuild node-sass --force
 RUN npm install
 RUN bower install --allow-root
 COPY ./server/config-example.js ./server/config.js
