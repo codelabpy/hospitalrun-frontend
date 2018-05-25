@@ -1,8 +1,9 @@
+import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
+import RSVP from 'rsvp';
+import EmberObject, { set, get, computed } from '@ember/object';
 import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
-import Ember from 'ember';
 import { translationMacro as t } from 'ember-i18n';
-
-const { computed, get, inject, isEmpty, RSVP, set } = Ember;
 
 export default AbstractEditController.extend({
   addAction: 'addPhoto',
@@ -14,9 +15,8 @@ export default AbstractEditController.extend({
   showFileRequired: false,
   showUpdateButton: true,
 
-  database: inject.service(),
-  editController: inject.controller('patients/edit'),
-  filesystem: inject.service(),
+  database: service(),
+  filesystem: service(),
 
   photoFileNotSet: computed('model.photoFile', function() {
     let model = get(this, 'model');
@@ -53,7 +53,7 @@ export default AbstractEditController.extend({
 
   afterUpdate(model) {
     let isNew = get(this, 'newModel');
-    let editController = get(this, 'editController');
+    let editController = get(model, 'editController');
     if (isNew) {
       let photoFile = get(model, 'photoFile');
       let saveToDir = get(model, 'saveToDir');
@@ -85,7 +85,7 @@ export default AbstractEditController.extend({
     set(this, 'newModel', isNew);
     if (isNew) {
       model.setProperties({
-        files: [Ember.Object.create({
+        files: [EmberObject.create({
           content_type: photoFile.type,
           data: photoFile,
           name: 'file'

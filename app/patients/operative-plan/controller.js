@@ -1,18 +1,12 @@
+import { inject as controller } from '@ember/controller';
+import { alias, map } from '@ember/object/computed';
+import RSVP from 'rsvp';
+import { set, get, computed } from '@ember/object';
 import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
-import Ember from 'ember';
 import { addProcedure } from 'hospitalrun/components/operative-procedures';
 import { COMPLETED_STATUS } from 'hospitalrun/mixins/operative-plan-statuses';
 import OperativePlanStatuses from 'hospitalrun/mixins/operative-plan-statuses';
 import PatientSubmodule from 'hospitalrun/mixins/patient-submodule';
-
-const {
-  computed,
-  computed: { alias },
-  get,
-  inject,
-  RSVP,
-  set
-} = Ember;
 
 // Properties to copy from plan to operative report
 const PLAN_KEYS_TO_COPY = [
@@ -39,7 +33,7 @@ export default AbstractEditController.extend(OperativePlanStatuses, PatientSubmo
   newPlan: false,
   updateCapability: 'add_operative_plan',
 
-  patientsController: inject.controller('patients'),
+  patientsController: controller('patients'),
 
   physicianList: alias('patientsController.physicianList'),
   procedureList: alias('patientsController.procedureList'),
@@ -58,7 +52,7 @@ export default AbstractEditController.extend(OperativePlanStatuses, PatientSubmo
     }
   }),
 
-  modelProcedures: computed.map('model.procedures', function(procedure) {
+  modelProcedures: map('model.procedures', function(procedure) {
     return get(procedure, 'description');
   }),
 
@@ -66,7 +60,12 @@ export default AbstractEditController.extend(OperativePlanStatuses, PatientSubmo
     let newPlan = get(this, 'newPlan');
     if (newPlan) {
       let patient = get(this, 'model.patient');
-      patient.save().then(this._finishAfterUpdate.bind(this));
+      patient.save().then(this._finishAfterUpdate.bind(this)).then(()=> {
+        let editTitle = get(this, 'i18n').t('operativePlan.titles.editTitle');
+        let sectionDetails = {};
+        sectionDetails.currentScreenTitle = editTitle;
+        this.send('setSectionHeader', sectionDetails);
+      });
     } else {
       this._finishAfterUpdate();
     }

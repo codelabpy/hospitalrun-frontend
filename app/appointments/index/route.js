@@ -1,3 +1,4 @@
+import { computed } from '@ember/object';
 import AbstractIndexRoute from 'hospitalrun/routes/abstract-index-route';
 import moment from 'moment';
 import { translationMacro as t } from 'ember-i18n';
@@ -5,8 +6,12 @@ import { translationMacro as t } from 'ember-i18n';
 export default AbstractIndexRoute.extend({
   editReturn: 'appointments.index',
   modelName: 'appointment',
-  newButtonText: t('appointments.buttons.newButton'),
-  pageTitle: t('appointments.thisWeek'),
+  newButtonText: computed('i18n.locale', () => {
+    return t('appointments.buttons.newButton');
+  }),
+  pageTitle: computed('i18n.locale', () => {
+    return t('appointments.thisWeek');
+  }),
 
   _getStartKeyFromItem(item) {
     let endDate = item.get('endDate');

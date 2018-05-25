@@ -1,8 +1,12 @@
+import { computed } from '@ember/object';
 import { translationMacro as t } from 'ember-i18n';
 import AbstractIndexRoute from 'hospitalrun/routes/abstract-index-route';
+
 export default AbstractIndexRoute.extend({
   modelName: 'imaging',
-  pageTitle: t('imaging.pageTitle'),
+  pageTitle: computed('i18n.locale', () => {
+    return t('imaging.pageTitle');
+  }),
   searchStatus: 'Requested',
 
   _getStartKeyFromItem(item) {

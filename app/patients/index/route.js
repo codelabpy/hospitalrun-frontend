@@ -1,9 +1,7 @@
+import { computed } from '@ember/object';
 import AbstractIndexRoute from 'hospitalrun/routes/abstract-index-route';
-import Ember from 'ember';
 import { translationMacro as t } from 'ember-i18n';
 import UserSession from 'hospitalrun/mixins/user-session';
-
-const { computed } = Ember;
 
 export default AbstractIndexRoute.extend(UserSession, {
   modelName: 'patient',
@@ -15,7 +13,9 @@ export default AbstractIndexRoute.extend(UserSession, {
     }
   }),
   newButtonText: t('patients.buttons.newPatient'),
-  pageTitle: t('patients.titles.patientListing'),
+  pageTitle: computed('i18n.locale', () => {
+    return t('patients.titles.patientListing');
+  }),
 
   _getStartKeyFromItem(item) {
     let displayPatientId = item.get('displayPatientId');

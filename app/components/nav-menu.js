@@ -1,44 +1,43 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { set, get, computed } from '@ember/object';
 import UserSession from 'hospitalrun/mixins/user-session';
 
-export default Ember.Component.extend(UserSession, {
-  tagName: 'div',
+export default Component.extend(UserSession, {
+  callCloseSettings: 'closeSettings',
+  callNavAction: 'navAction',
   classNames: ['primary-nav-item'],
-  nav: null,
-
-  show: function() {
-    this._setupSubNav();
-    return this.currentUserCan(this.get('nav').capability);
-  }.property('nav', 'session.data.authenticated.userCaps'),
-
   isShowing: false,
+  nav: null,
+  tagName: 'div',
+
+  show: computed('nav', 'session.data.authenticated.userCaps', function() {
+    this._setupSubNav();
+    return this.currentUserCan(get(this, 'nav').capability);
+  }),
 
   _setup: function() {
-    let nav = this.get('nav');
+    let nav = get(this, 'nav');
     nav.closeSubnav = function() {
-      this.set('isShowing', false);
+      set(this, 'isShowing', false);
     }.bind(this);
     this._setupSubNav();
   }.on('init'),
 
   _setupSubNav() {
-    let nav = this.get('nav');
+    let nav = get(this, 'nav');
     nav.subnav.forEach((item) => {
-      item.show = this.currentUserCan(item.capability);
+      set(item, 'show', this.currentUserCan(item.capability));
     });
   },
 
-  callNavAction: 'navAction',
-  callCloseSettings: 'closeSettings',
-
   actions: {
-    toggleContent() {
-      this.set('isShowing', !this.get('isShowing'));
-      this.sendAction('callNavAction', this.nav);
-    },
-
     resetNav() {
       this.sendAction('callCloseSettings');
+    },
+
+    toggleContent() {
+      this.toggleProperty('isShowing');
+      this.sendAction('callNavAction', this.nav);
     }
   }
 });

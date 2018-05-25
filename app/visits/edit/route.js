@@ -1,23 +1,20 @@
+import { inject as service } from '@ember/service';
+import EmberObject, { set, get } from '@ember/object';
+import { isEmpty } from '@ember/utils';
 import { translationMacro as t } from 'ember-i18n';
 import AbstractEditRoute from 'hospitalrun/routes/abstract-edit-route';
 import ChargeRoute from 'hospitalrun/mixins/charge-route';
-import Ember from 'ember';
 import PatientListRoute from 'hospitalrun/mixins/patient-list-route';
 import PatientVisit from 'hospitalrun/mixins/patient-visits';
 import DS from 'ember-data';
 
-const {
-  get,
-  set,
-  isEmpty
-} = Ember;
-
 export default AbstractEditRoute.extend(ChargeRoute, PatientListRoute, PatientVisit, {
-  customForms: Ember.inject.service(),
+  customForms: service(),
   editTitle: t('visits.titles.editVisit'),
   modelName: 'visit',
   newTitle: t('visits.titles.newVisit'),
   pricingCategory: 'Ward',
+  photos: null,
 
   model(params) {
     let idParam = get(this, 'idParam');
@@ -36,7 +33,7 @@ export default AbstractEditRoute.extend(ChargeRoute, PatientListRoute, PatientVi
     let newVisitData = {
       startDate: new Date(),
       visitType: 'Admission',
-      customForms: Ember.Object.create()
+      customForms: EmberObject.create()
     };
     let customForms = this.get('customForms');
     return customForms.setDefaultCustomForms(['visit'], newVisitData);
@@ -62,6 +59,16 @@ export default AbstractEditRoute.extend(ChargeRoute, PatientListRoute, PatientVi
     });
     set(controller, 'report', DS.PromiseObject.create({ promise }));
     this._super(controller, model);
+    this.store.query('photo', {
+      options: {
+        key: get(model, 'id')
+      },
+      mapReduce: 'photo_by_visit'
+    }).then(function(photos) {
+      let visitPhotos = [];
+      visitPhotos.addObjects(photos);
+      model.set('photos', visitPhotos);
+    });
   },
 
   actions: {
@@ -70,6 +77,9 @@ export default AbstractEditRoute.extend(ChargeRoute, PatientListRoute, PatientVi
     },
     deletePatientNote(model) {
       this.controller.send('deletePatientNote', model);
+    },
+    deletePhoto(model) {
+      this.controller.send('deletePhoto', model);
     }
   }
 });

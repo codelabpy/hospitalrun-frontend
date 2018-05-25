@@ -1,22 +1,26 @@
+import { once } from '@ember/runloop';
+import { alias } from '@ember/object/computed';
+import { inject as controller } from '@ember/controller';
 import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
 import AdjustmentTypes from 'hospitalrun/mixins/inventory-adjustment-types';
-import Ember from 'ember';
 import { translationMacro as t } from 'ember-i18n';
 export default AbstractEditController.extend(AdjustmentTypes, {
-  inventoryController: Ember.inject.controller('inventory'),
+  inventoryController: controller('inventory'),
 
-  expenseAccountList: Ember.computed.alias('inventoryController.expenseAccountList'),
+  expenseAccountList: alias('inventoryController.expenseAccountList'),
 
   title: t('inventory.titles.adjustment'),
 
   transactionTypeChanged: function() {
-    Ember.run.once(this, function() {
-      this.get('model').validate().catch(Ember.K);
+    once(this, function() {
+      this.get('model').validate().catch(function() {});
     });
   }.observes('transactionType'),
 
   updateButtonText: function() {
-    return this.get('model.transactionType');
+    let transactionType = this.get('model.transactionType');
+    let adjustmentType = this.get('adjustmentTypes').findBy('type', transactionType);
+    return adjustmentType.name;
   }.property('model.transactionType'),
 
   updateButtonAction: 'adjust',

@@ -1,84 +1,75 @@
-import Ember from 'ember';
-import { module, test } from 'qunit';
-import startApp from 'hospitalrun/tests/helpers/start-app';
+import { test } from 'qunit';
 import FakeServer, { stubRequest } from 'ember-cli-fake-server';
 
-module('Acceptance | login', {
+import moduleForAcceptance from 'hospitalrun/tests/helpers/module-for-acceptance';
+import runWithPouchDump from 'hospitalrun/tests/helpers/run-with-pouch-dump';
+import { waitToAppear } from 'hospitalrun/tests/helpers/wait-to-appear';
+
+moduleForAcceptance('Acceptance | login', {
   beforeEach() {
     FakeServer.start();
-    this.application = startApp();
   },
 
   afterEach() {
     FakeServer.stop();
-    Ember.run(this.application, 'destroy');
   }
 });
 
 test('visiting / redirects user to login', function(assert) {
   assert.expect(1);
-  runWithPouchDump('default', function() {
-    visit('/');
-
-    andThen(function() {
-      assert.equal(currentURL(), '/login');
-    });
-
+  return runWithPouchDump('default', async function() {
+    await visit('/');
+    assert.equal(currentURL(), '/login');
   });
 });
 
 test('login with correct credentials', function(assert) {
-  login(assert);
+  return login(assert);
 });
 test('login with correct credentials but space around username', function(assert) {
-  login(assert, true);
+  return login(assert, true);
 });
 
 test('incorrect credentials shows an error message on the screen', function(assert) {
-  assert.expect(2);
-  runWithPouchDump('default', function() {
-    visit('/');
+  if (!window.ELECTRON) {
+    assert.expect(2);
+  }
+  return runWithPouchDump('default', async function() {
+    await visit('/');
 
     let errorMessage = 'Username or password is incorrect.';
 
-    stubRequest('post', '/db/_session', function(request) {
+    stubRequest('post', '/auth/login', function(request) {
       assert.equal(request.requestBody, 'name=hradmin&password=tset', 'credential are sent to the server');
       request.error({ 'error': 'unauthorized', 'reason': errorMessage });
     });
 
-    fillIn('#identification', 'hradmin');
-    fillIn('#password', 'tset');
-    click('button:contains(Sign in)');
-    waitToAppear('.form-signin-alert');
+    await fillIn('#identification', 'hradmin');
+    await fillIn('#password', 'tset');
+    await click('button:contains(Sign in)');
+    await waitToAppear('.form-signin-alert');
 
-    andThen(function() {
-      assert.equal(find('.form-signin-alert').text(), errorMessage, 'Error reason is shown');
-    });
-
+    assert.dom('.form-signin-alert').hasText(errorMessage, 'Error reason is shown');
   });
 });
 
 function login(assert, spaceAroundUsername) {
-  assert.expect(3);
-  runWithPouchDump('default', function() {
-    visit('/login');
+  if (!window.ELECTRON) {
+    assert.expect(2);
+  }
+  return runWithPouchDump('default', async function() {
+    await visit('/login');
 
-    stubRequest('post', '/db/_session', function(request) {
+    stubRequest('post', '/auth/login', function(request) {
       assert.equal(request.requestBody, 'name=hradmin&password=test', !spaceAroundUsername ? 'credential are sent to the server' : 'username trimmed and credential are sent to the server');
       request.ok({ 'ok': true, 'name': 'hradmin', 'roles': ['System Administrator', 'admin', 'user'] });
     });
 
-    stubRequest('post', '/chkuser', function(request) {
-      assert.equal(request.requestBody, 'name=hradmin', !spaceAroundUsername ? 'username is sent to /chkuser' : 'trimmed username is sent to /chkuser');
-      request.ok({ 'prefix': 'p1', 'role': 'System Administrator' });
-    });
+    assert.equal(currentURL(), '/login');
 
-    andThen(function() {
-      assert.equal(currentURL(), '/login');
-    });
-
-    fillIn('#identification', !spaceAroundUsername ? 'hradmin' : ' hradmin');
-    fillIn('#password', 'test');
-    click('button:contains(Sign in)');
+    await fillIn('#identification', !spaceAroundUsername ? 'hradmin' : ' hradmin');
+    await fillIn('#password', 'test');
+    await click('button:contains(Sign in)');
+    await waitToAppear('.sidebar-nav-logo');
   });
 }

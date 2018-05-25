@@ -1,4 +1,4 @@
-import Ember from 'ember';
-export default Ember.Mixin.create({
-  version: '0.9.18'
+import Mixin from '@ember/object/mixin';
+export default Mixin.create({
+  version: '1.0.0-beta'
 });

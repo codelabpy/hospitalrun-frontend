@@ -1,14 +1,12 @@
+import { isEmpty } from '@ember/utils';
 import AbstractDeleteController from 'hospitalrun/controllers/abstract-delete-controller';
 import PatientVisitsMixin from 'hospitalrun/mixins/patient-visits';
 import PatientAppointmentsMixin from 'hospitalrun/mixins/patient-appointments';
 import PatientInvoicesMixin from 'hospitalrun/mixins/patient-invoices';
 import PouchDbMixin from 'hospitalrun/mixins/pouchdb';
 import ProgressDialog from 'hospitalrun/mixins/progress-dialog';
-import Ember from 'ember';
 import { translationMacro as t } from 'ember-i18n';
 import { task, taskGroup, all } from 'ember-concurrency';
-
-const MAX_CONCURRENCY = 5;
 
 export default AbstractDeleteController.extend(PatientVisitsMixin, PatientInvoicesMixin, PouchDbMixin, ProgressDialog, PatientAppointmentsMixin, {
   title: t('patients.titles.delete'),
@@ -25,15 +23,15 @@ export default AbstractDeleteController.extend(PatientVisitsMixin, PatientInvoic
       return;
     }
     let resolvedArray = yield manyArray;
-    if (Ember.isEmpty(resolvedArray)) {
+    if (isEmpty(resolvedArray)) {
       // empty array: no records to delete
       return;
     }
     let deleteRecordTask = this.get('deleteRecordTask');
     let archivePromises = [];
-    for (let recordToDelete of resolvedArray) {
+    resolvedArray.forEach((recordToDelete) => {
       archivePromises.push(deleteRecordTask.perform(recordToDelete));
-    }
+    });
     return yield all(archivePromises, 'async array deletion');
   }).group('deleting'),
 
@@ -41,7 +39,7 @@ export default AbstractDeleteController.extend(PatientVisitsMixin, PatientInvoic
     recordToDelete.set('archived', true);
     yield recordToDelete.save();
     return yield recordToDelete.unloadRecord();
-  }).maxConcurrency(MAX_CONCURRENCY).enqueue().group('deleting'),
+  }).group('deleting'),
 
   // Override delete action on controller; we must delete
   // all related records before deleting patient record
@@ -71,10 +69,10 @@ export default AbstractDeleteController.extend(PatientVisitsMixin, PatientInvoic
 
   deleteVisitsTask: task(function* (visits) {
     let pendingTasks = [];
-    for (let visit of visits) {
-      let labs = yield visit.get('labs');
-      let procedures = yield visit.get('procedures');
-      let imaging = yield visit.get('imaging');
+    visits.forEach((visit) => {
+      let labs = visit.get('labs');
+      let procedures = visit.get('procedures');
+      let imaging =  visit.get('imaging');
       let procCharges = procedures.get('charges');
       let labCharges = labs.get('charges');
       let imagingCharges = imaging.get('charges');
@@ -89,7 +87,7 @@ export default AbstractDeleteController.extend(PatientVisitsMixin, PatientInvoic
       pendingTasks.push(this.deleteMany(imaging));
       pendingTasks.push(this.deleteMany(imagingCharges));
       pendingTasks.push(this.deleteMany(visitCharges));
-    }
+    });
     yield all(pendingTasks);
     return yield this.deleteMany(visits);
   }).group('deleting'),

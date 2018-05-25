@@ -1,38 +1,28 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { run } from '@ember/runloop';
+import Controller from '@ember/controller';
+import { alias } from '@ember/object/computed';
+import { get } from '@ember/object';
 import UserSession from 'hospitalrun/mixins/user-session';
-export default Ember.Controller.extend(UserSession, {
-  indexLinks: [
-    'Appointments',
-    'Labs',
-    'Imaging',
-    'Inventory',
-    'Medication',
-    'Patients',
-    'Users'
-  ],
 
-  setupPermissions: Ember.on('init', function() {
-    let permissions = this.get('defaultCapabilities');
-    for (let capability in permissions) {
-      if (this.currentUserCan(capability)) {
-        this.set(`userCan_${capability}`, true);
-      }
+export default Controller.extend(UserSession, {
+  config: service(),
+  database: service(),
+  standAlone: alias('config.standAlone'),
+  needsUserSetup: alias('config.needsUserSetup'),
+  // on init, look up the list of users and determine if there's a need for a needsUserSetup msg
+  init() {
+    if (get(this, 'standAlone')) {
+      get(this, 'database.usersDB').allDocs().then((results) => {
+        if (results.total_rows <= 1) {
+          run(() => this.set('config.needsUserSetup', true));
+        }
+      });
     }
-  }),
-
-  activeLinks: Ember.computed('indexLinks', function() {
-    let activeLinks = [];
-    let indexLinks = this.get('indexLinks');
-    indexLinks.forEach(function(link) {
-      let action = link.toLowerCase();
-      if (this.currentUserCan(action)) {
-        activeLinks.push({
-          action,
-          text: link
-        });
-      }
-    }.bind(this));
-    return activeLinks;
-  })
-
+  },
+  actions: {
+    newUser() {
+      this.send('createNewUser');
+    }
+  }
 });

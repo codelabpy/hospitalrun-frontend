@@ -1,27 +1,53 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import Service, { inject as service } from '@ember/service';
+import RSVP, { Promise as EmberPromise, all } from 'rsvp';
+import { run } from '@ember/runloop';
+import { set, get } from '@ember/object';
 
-const { inject, run } = Ember;
-
-export default Ember.Service.extend({
+export default Service.extend({
   configDB: null,
-  database: inject.service(),
-  session: inject.service(),
-  sessionData: Ember.computed.alias('session.data'),
-
+  database: service(),
+  session: service(),
+  languagePreference: service(),
+  sessionData: alias('session.data'),
+  standAlone: false,
+  needsUserSetup: false,
+  markUserSetupComplete() {
+    if (get(this, 'needsUserSetup') === true) {
+      set(this, 'needsUserSetup', false);
+      let config = this.get('configDB');
+      return new RSVP.Promise(function(resolve, reject) {
+        config.put({ _id: 'config_user_setup_flag', value: false }, function(err, doc) {
+          if (err) {
+            reject(err);
+          }
+          resolve(doc);
+        });
+      });
+    } else {
+      return RSVP.resolve(true);
+    }
+  },
   setup() {
     let replicateConfigDB = this.replicateConfigDB.bind(this);
     let loadConfig = this.loadConfig.bind(this);
     let db = this.createDB();
     this.set('configDB', db);
-    this.setCurrentUser();
-    return replicateConfigDB(db).then(loadConfig);
-  },
 
+    if (window.ELECTRON) {
+      this.set('standAlone', true);
+    }
+    if (this.get('standAlone') === false) {
+      return replicateConfigDB(db).then(loadConfig);
+    } else {
+      return loadConfig();
+    }
+  },
   createDB() {
     return new PouchDB('config');
   },
   replicateConfigDB(db) {
-    let promise = new Ember.RSVP.Promise((resolve) => {
+    let promise = new RSVP.Promise((resolve) => {
       let url = `${document.location.protocol}//${document.location.host}/db/config`;
       db.replicate.from(url).then(resolve).catch(resolve);
     });
@@ -35,12 +61,13 @@ export default Ember.Service.extend({
         'config_consumer_key',
         'config_consumer_secret',
         'config_disable_offline_sync',
+        'config_external_search',
         'config_oauth_token',
         'config_token_secret',
         'config_use_google_auth'
       ]
     };
-    return new Ember.RSVP.Promise(function(resolve, reject) {
+    return new EmberPromise(function(resolve, reject) {
       config.allDocs(options, function(err, response) {
         if (err) {
           console.log('Could not get configDB configs:', err);
@@ -58,7 +85,7 @@ export default Ember.Service.extend({
   },
   getFileLink(id) {
     let config = this.get('configDB');
-    return new Ember.RSVP.Promise(function(resolve, reject) {
+    return new EmberPromise(function(resolve, reject) {
       config.get(`file-link_${id}`, function(err, doc) {
         if (err) {
           reject(err);
@@ -75,7 +102,7 @@ export default Ember.Service.extend({
   },
   saveFileLink(fileName, id) {
     let config = this.get('configDB');
-    return new Ember.RSVP.Promise(function(resolve, reject) {
+    return new EmberPromise(function(resolve, reject) {
       config.put({ fileName, _id: `file-link_${id}` }, function(err, doc) {
         if (err) {
           reject(err);
@@ -102,7 +129,7 @@ export default Ember.Service.extend({
         }
         savePromises.push(configDB.put(configRecord));
       });
-      return Ember.RSVP.all(savePromises);
+      return all(savePromises);
     });
   },
   useGoogleAuth() {
@@ -119,7 +146,7 @@ export default Ember.Service.extend({
 
   getConfigValue(id, defaultValue) {
     let configDB = this.get('configDB');
-    return new Ember.RSVP.Promise(function(resolve) {
+    return new EmberPromise(function(resolve) {
       configDB.get(`config_${id}`).then(function(doc) {
         run(null, resolve, doc.value);
       })
@@ -138,21 +165,8 @@ export default Ember.Service.extend({
     return configDB.allDocs(options);
   },
 
-  setCurrentUser(userName) {
-    let config = this.get('configDB');
+  getCurrentUser() {
     let sessionData = this.get('sessionData');
-    if (!userName && sessionData.authenticated) {
-      userName = sessionData.authenticated.name;
-    }
-    config.get('current_user').then((doc) => {
-      doc.value = userName;
-      config.put(doc);
-    }).catch(() => {
-      config.put({
-        _id: 'current_user',
-        value: userName
-      });
-    });
+    return sessionData.authenticated;
   }
-
 });

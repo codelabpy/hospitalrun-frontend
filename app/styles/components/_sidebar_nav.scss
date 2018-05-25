@@ -21,6 +21,12 @@
   }
 }
 
+.rtl .sidebar-nav {
+  right: 0;
+  left: unset;
+  text-align: right;
+}
+
 .scroll-container {
   position: absolute;
   top: 55px;
@@ -88,7 +94,7 @@
     content: ' ';
   }
 
-  > a {
+  > a, div {
     display: block;
     border-top: 1px solid $blue_lightest2;
     padding: 6px 10px;
@@ -97,6 +103,10 @@
     font-weight: 400;
 
     &:first-of-type { border-top: 0; }
+  }
+
+  .logout {
+    float: left;
   }
 }
 
@@ -204,7 +214,8 @@
     color: $sidebar_sublink_text;
     font-size: 15px;
 
-    &:hover {
+    &:hover,
+    &.active {
       background: $navy_mid;
       color: $white;
 

@@ -1,11 +1,10 @@
-/* eslint-env node */
-/* eslint no-var: 0 */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'hospitalrun',
     environment,
-    rootURL: '/',
+    rootURL: process.env.EMBER_CLI_ELECTRON ? null : '/',
     locationType: 'hash', // Using hash location type because it is more friendly for offline.
     EmberENV: {
       FEATURES: {
@@ -33,6 +32,14 @@ module.exports = function(environment) {
     'style-src': "'self' 'unsafe-inline'"
   };
 
+  if (environment === 'development') {
+    // ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+  }
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
@@ -42,6 +49,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
   }
 
   ENV.i18n = {
@@ -55,22 +63,30 @@ module.exports = function(environment) {
     showCreateDate: true
   };
 
-  ENV.serviceWorker = {
-    enabled: true,
-    debug: true,
-    excludePaths: ['manifest.appcache'],
-    swIncludeFiles: [
-      'node_modules/pouchdb/dist/pouchdb.js'
-    ]
-  };
-  if (environment === 'production') {
-    ENV.serviceWorker.debug = false;
+  if (process.env.EMBER_CLI_ELECTRON) {
+    ENV.serviceWorker = {
+      enabled: false,
+      includeRegistration: false
+    };
+  } else {
+    ENV.serviceWorker = {
+      enabled: true,
+      debug: true,
+      excludePaths: ['manifest.appcache'],
+      swIncludeFiles: [
+        'vendor/pouchdb-for-sw.js'
+      ]
+    };
+    if (environment === 'production') {
+      ENV.serviceWorker.debug = false;
+    }
   }
-  if (environment === 'test') {
-    ENV.serviceWorker.includeRegistration = false;
+  if (environment === 'test' && !process.env.EMBER_CLI_ELECTRON) {
+    ENV.serviceWorker.enabled = true;
   }
 
   ENV.emberFullCalendar =  {
+    includeScheduler: true,
     schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
   };
 

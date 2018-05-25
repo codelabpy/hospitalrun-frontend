@@ -1,7 +1,13 @@
+import { run } from '@ember/runloop';
+import { getOwner } from '@ember/application';
 import { moduleForModel, test } from 'ember-qunit';
-import Ember from 'ember';
+import tHelper from 'ember-i18n/helper';
+import localeConfig from 'ember-i18n/config/en';
 
-import { testValidPropertyValues, testInvalidPropertyValues } from '../../helpers/validate-properties';
+import {
+  testValidPropertyValues,
+  testInvalidPropertyValues
+} from '../../helpers/validate-properties';
 
 moduleForModel('inv-request', 'Unit | Model | inv-request', {
   needs: [
@@ -17,8 +23,25 @@ moduleForModel('inv-request', 'Unit | Model | inv-request', {
     'model:patient',
     'model:payment',
     'model:price-profile',
-    'model:visit'
-  ]
+    'model:visit',
+    'service:i18n',
+    'service:session',
+    'locale:en/translations',
+    'locale:en/config',
+    'util:i18n/missing-message',
+    'util:i18n/compile-template',
+    'config:environment'
+  ],
+  beforeEach() {
+    // set the locale and the config
+    this.container.lookup('service:i18n').set('locale', 'en');
+    this.registry.register('locale:en/config', localeConfig);
+
+    getOwner(this).inject('model', 'i18n', 'service:i18n');
+
+    // register t helper
+    this.registry.register('helper:t', tHelper);
+  }
 });
 
 test('deliveryLocationName', function(assert) {
@@ -32,7 +55,7 @@ test('deliveryLocationName', function(assert) {
 
 test('deliveryDetails', function(assert) {
   let patient;
-  Ember.run(() => {
+  run(() => {
     patient = this.store().createRecord('patient', {
       firstName: 'First'
     });

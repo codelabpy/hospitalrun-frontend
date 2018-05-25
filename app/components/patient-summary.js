@@ -1,14 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { isEmpty } from '@ember/utils';
+import { set, get, computed } from '@ember/object';
 import UserSession from 'hospitalrun/mixins/user-session';
 
-const {
-  computed,
-  get,
-  isEmpty,
-  set
-} = Ember;
-
-export default Ember.Component.extend(UserSession, {
+export default Component.extend(UserSession, {
   allowAddAllergy: false,
   allowAddDiagnosis: false,
   allowAddOperativePlan: false,
@@ -16,6 +11,7 @@ export default Ember.Component.extend(UserSession, {
   diagnosisContainer: null,
   diagnosisList: null,
   disablePatientLink: false,
+  editAllergyAction: 'editAllergy',
   editDiagnosisAction: 'editDiagnosis',
   editOperativePlanAction: 'editOperativePlan',
   editOperationReportAction: 'editOperationReport',
@@ -23,6 +19,7 @@ export default Ember.Component.extend(UserSession, {
   hideInActiveDiagnoses: true,
   patient: null,
   patientProcedures: null,
+  showAddAllergyAction: 'showAddAllergy',
   showAddDiagnosisAction: 'showAddDiagnosis',
   showPatientAction: 'showPatient',
 
@@ -86,6 +83,10 @@ export default Ember.Component.extend(UserSession, {
       }
     },
 
+    editAllergy(allergy) {
+      this.sendAction('editAllergyAction', allergy);
+    },
+
     editDiagnosis(diagnosis) {
       this.sendAction('editDiagnosisAction', diagnosis);
     },
@@ -97,6 +98,10 @@ export default Ember.Component.extend(UserSession, {
       } else {
         this.sendAction('editOperationReportAction', report);
       }
+    },
+
+    showAddAllergy() {
+      this.sendAction('showAddAllergyAction');
     },
 
     showAddDiagnosis() {

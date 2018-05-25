@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { resolve, all } from 'rsvp';
 /* global req */
 /* global compareStrings */
 /* global getCompareDate */
@@ -39,7 +39,7 @@ function checkForUpdate(view, db, runningTest, testDumpFile) {
         // Indexes need to be built when running tests
         return buildIndex(view.name, db);
       } else {
-        return Ember.RSVP.resolve();
+        return resolve();
       }
     }
   }, function() {
@@ -425,6 +425,18 @@ let designDocs = [{
   ),
   version: 4
 }, {
+  name: 'photo_by_procedure',
+  function: generateView('photo',
+    'emit(doc.data.procedure);'
+  ),
+  version: 1
+}, {
+  name: 'photo_by_visit',
+  function: generateView('photo',
+    'emit(doc.data.visit);'
+  ),
+  version: 1
+}, {
   name: 'procedure_by_date',
   function: generateView('procedure',
     `${generateDateForView('procedureDate')}
@@ -490,5 +502,5 @@ export default function(db, runningTest, testDumpFile) {
   designDocs.forEach(function(item) {
     viewUpdates.push(checkForUpdate(item, db, runningTest, testDumpFile));
   });
-  return Ember.RSVP.all(viewUpdates);
+  return all(viewUpdates);
 }
